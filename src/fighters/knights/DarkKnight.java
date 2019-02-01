@@ -2,14 +2,14 @@ package fighters.knights;
 
 
 import abilitys.FighterClassAbility;
-import abilitys.VampireHeal;
+import abilitys.LifeDrain;
 import fighters.base.Fighter;
 
 public class DarkKnight extends Knight {
     FighterClassAbility ability;
 
     public DarkKnight() {
-        this.ability = new VampireHeal();
+        this.ability = new LifeDrain();
     }
 
     @Override

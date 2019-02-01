@@ -8,6 +8,9 @@ import utilites.Helper;
 
 import java.util.Random;
 
+import static utilites.Elements.*;
+import static utilites.Elements.FIRE;
+
 public class Barracs {
     static String[] fightgerClases = {"elemental","vampire","ancient","cheeter", "darkknight", "dragon", "dragonrider", "holyknight", "knight"};
     static boolean isCheaterCreated;
@@ -25,6 +28,31 @@ public class Barracs {
         }while (finish);
 
         return creatrNewFighter(fightgerClases[selector]);
+    }
+
+    public static int createElementTalant() {
+
+        int result = 0;
+        int talant = (int) (Math.abs(Helper.getRandomHelper().nextGaussian() * 10)) % 4;
+        switch (talant) {
+            case 0: {
+                result = AIR.sign();
+                break;
+            }
+            case 1: {
+                result = WATER.sign();
+                break;
+            }
+            case 2: {
+                result = EARTH.sign();
+                break;
+            }
+            case 3: {
+                result = FIRE.sign();
+                break;
+            }
+        }
+        return result;
     }
 
     private static Fighter creatrNewFighter(String fightgerClase) {

@@ -1,7 +1,7 @@
 package fighters.unded;
 
 import abilitys.FighterClassAbility;
-import abilitys.VoidAbility;
+import abilitys.ReceiveElement;
 import fighters.base.ElementalFighter;
 import utilites.Helper;
 
@@ -11,7 +11,7 @@ public class AncientVampire extends Vampire implements ElementalFighter {
     private String name;
     private float attak;
     float deffence;
-    public float helth;
+    private float helth;
     float currentHelth;
 
     public AncientVampire() {
@@ -20,12 +20,17 @@ public class AncientVampire extends Vampire implements ElementalFighter {
         setCurrentHelth(helth);
         setAttak();
         setDeffence();
-        setAbility(new VoidAbility());
+        setAbility(new ReceiveElement());
     }
 
     @Override
     public int getElements() {
         return element;
+    }
+
+    @Override
+    public void increaseMultyplayAtack(float mult) {
+        this.atackModifier = mult;
     }
 
 //    @Override

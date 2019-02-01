@@ -1,7 +1,7 @@
 package fighters.unded;
 
 import abilitys.FighterClassAbility;
-import abilitys.VampireHeal;
+import abilitys.VampiricPover;
 import fighters.base.Fighter;
 import utilites.Helper;
 
@@ -12,6 +12,7 @@ public class Vampire implements Fighter {
     float deffence;
     private float helth;
     float currentHelth;
+    float atackModifier;
 
     public Vampire() {
         setName("generate");
@@ -19,7 +20,7 @@ public class Vampire implements Fighter {
         setCurrentHelth(helth);
         setAttak();
         setDeffence();
-        setAbility(new VampireHeal());
+        setAbility(new VampiricPover());
     }
 
 
@@ -96,4 +97,23 @@ public class Vampire implements Fighter {
 
     }
 
+    public void setAttak(float attak) {
+        this.attak = attak;
+    }
+
+    public void setDeffence(float deffence) {
+        this.deffence = deffence;
+    }
+
+    public void setHelth(float helth) {
+        this.helth = helth;
+    }
+
+    public float getAtackModifier() {
+        return atackModifier;
+    }
+
+    public void setAtackModifier(float atackModifier) {
+        this.atackModifier = atackModifier;
+    }
 }

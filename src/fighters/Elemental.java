@@ -9,6 +9,8 @@ import fighters.base.Fighter;
 import utilites.Elements;
 import utilites.Helper;
 
+import static unitLabs.Barracs.createElementTalant;
+
 public class Elemental implements Fighter,ElementalFighter, ActionPostFight {
     int element;
     FighterClassAbility ability;
@@ -17,6 +19,7 @@ public class Elemental implements Fighter,ElementalFighter, ActionPostFight {
     float deffence;
     private float helth;
     float currentHelth;
+    float atackModifier;
 
     public Elemental() {
         setName("generate");
@@ -24,6 +27,7 @@ public class Elemental implements Fighter,ElementalFighter, ActionPostFight {
         setCurrentHelth(helth);
         setAttak();
         setDeffence();
+        element = createElementTalant();
         setAbility(new ElementalStrike());
 
     }
@@ -35,6 +39,11 @@ public class Elemental implements Fighter,ElementalFighter, ActionPostFight {
     @Override
     public int getElements() {
         return element;
+    }
+
+    @Override
+    public void increaseMultyplayAtack(float mult) {
+
     }
 
     @Override
@@ -132,5 +141,21 @@ public class Elemental implements Fighter,ElementalFighter, ActionPostFight {
 
     public void setCurrentHelth(float currentHelth) {
         this.currentHelth = currentHelth;
+    }
+
+    public int getElement() {
+        return element;
+    }
+
+    public void setHelth(float helth) {
+        this.helth = helth;
+    }
+
+    public float getAtackModifier() {
+        return atackModifier;
+    }
+
+    public void setAtackModifier(float atackModifier) {
+        this.atackModifier = atackModifier;
     }
 }

@@ -4,7 +4,7 @@ import fighters.Dragon;
 
 import java.util.Random;
 
-import static utilites.Elements.*;
+import static unitLabs.Barracs.createElementTalant;
 
 
 /**
@@ -34,36 +34,13 @@ public class DragonLair {
 
     static Dragon createNewDragon() {
         borned = new Dragon();
-        borned.setElements(createDragonTalant());
+        borned.setElements(createElementTalant());
 
         return borned;
     }
 
 
-    private static int createDragonTalant() {
-        fate = new Random();
-        int result = 0;
-        int talant = (int) (Math.abs(fate.nextGaussian() * 10)) % 4;
-        switch (talant) {
-            case 0: {
-                result = AIR.sign();
-                break;
-            }
-            case 1: {
-                result = WATER.sign();
-                break;
-            }
-            case 2: {
-                result = EARTH.sign();
-                break;
-            }
-            case 3: {
-                result = FIRE.sign();
-                break;
-            }
-        }
-        return result;
-    }
+
 
 
 }

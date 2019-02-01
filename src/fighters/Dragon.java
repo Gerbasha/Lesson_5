@@ -14,6 +14,7 @@ public class Dragon implements ElementalFighter, Fighter {
     float deffence;
     public float helth;
     float currentHelth;
+    float atackModifier;
 
 
     public Dragon() {
