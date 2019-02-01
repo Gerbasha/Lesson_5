@@ -1,12 +1,11 @@
 package unitLabs;
 
-import abilitys.ElementsMagic;
 import fighters.Dragon;
-import fighters.GreatDragon;
 
 import java.util.Random;
 
-import static andrew.honework.com.lesson_5.Elements.*;
+import static utilites.Elements.*;
+
 
 /**
  * Created by Андрей on 26.01.2019.
@@ -16,12 +15,12 @@ public class DragonLair {
     private static Dragon borned;
     private static Random fate;
 
-    DragonLair() {
+    public DragonLair() {
         fate = new Random();
     }
 
 
-    GreatDragon ressurectThisDragon(Dragon d1) {
+    Dragon ressurectThisDragon(Dragon d1) {
 
         this.resurected = new Dragon();
         resurected.setName(d1.getName());
@@ -33,15 +32,10 @@ public class DragonLair {
     }
 
 
-    static GreatDragon createNewDragon() {
+    static Dragon createNewDragon() {
         borned = new Dragon();
-        borned.setName("generate");
-        borned.setHelth();
-        borned.setCurrentHelth(borned.helth);
-        borned.setAttak();
-        borned.setDeffence();
-        borned.setElements(DragonLair.createDragonTalant());
-        borned.setAbility(new ElementsMagic());
+        borned.setElements(createDragonTalant());
+
         return borned;
     }
 

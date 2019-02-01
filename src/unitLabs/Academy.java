@@ -1,10 +1,11 @@
 package unitLabs;
 
-import andrew.honework.com.lesson_5.classAbilitys.Shield;
-import andrew.honework.com.lesson_5.fighters.knights.DarkKnight;
-import andrew.honework.com.lesson_5.fighters.knights.HolyKhight;
-import andrew.honework.com.lesson_5.fighters.knights.Knight;
-import andrew.honework.com.lesson_5.fighters.base.Warrior;
+
+import abilitys.Shield;
+import fighters.base.Warrior;
+import fighters.knights.DarkKnight;
+import fighters.knights.HolyKhight;
+import fighters.knights.Knight;
 
 import java.util.Random;
 
@@ -21,10 +22,10 @@ public class Academy {
     Warrior ressurectThisWarrior(Warrior warrior) {
 
        if (warrior instanceof HolyKhight){
-            this.resurected = new HolyKhight();
+            resurected = new HolyKhight();
         } else  if (warrior instanceof DarkKnight){
-            this.resurected = new DarkKnight();
-        } else  this.resurected = new Knight();
+            resurected = new DarkKnight();
+        } else  resurected = new Knight();
 
         resurected.setName(warrior.getName());
         resurected.setAttak(warrior.getAttak());

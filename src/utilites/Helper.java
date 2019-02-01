@@ -38,7 +38,7 @@ public class Helper {
                 lastName[Math.abs(getRandomHelper().nextInt() % 8)];
     }
 
-    static void printSummary(Fighter[][] table) {//todo not null
+    public static void printSummary(Fighter[][] table) {//todo not null
         Fighter f1 = null;
         Fighter f2 = null;
         for (int i = 0; i < table.length - 1; i++) {
@@ -65,13 +65,13 @@ public class Helper {
     }
 
 
-    static void tossUpFigters(Fighter[] horde) {
+    public static void tossUpFigters(Fighter[] horde) {
         for (int i = 0; i < horde.length; i++) {
             horde[i] = Barracs.getNewFighter();
         }
     }
 
-    static void printSummary(Fighter[] horde) {
+    public static void printSummary(Fighter[] horde) {
         System.out.println("This fighters are ready for tournament:");
         for (Fighter f : horde) {
             System.out.println(f.getClass().getSimpleName() + " " + f.getName() + "[" + f.getHelth() + "] " + " a:" + f.getAttak() + " d:" + f.getDeffence());
@@ -91,7 +91,7 @@ public class Helper {
 
     }
 
-    static Round getNextFightersPair(Fighter[] horde, int i) {
+    public static Round getNextFightersPair(Fighter[] horde, int i) {
         Round couple = new Round();
 
         Fighter first = horde[i];

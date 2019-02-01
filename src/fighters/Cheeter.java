@@ -2,6 +2,7 @@ package fighters;
 
 import abilitys.FighterClassAbility;
 import abilitys.ReduceAbilitys;
+import abilitys.VoidAbility;
 import fighters.base.Fighter;
 
 public class Cheeter implements Fighter {
@@ -84,7 +85,7 @@ public class Cheeter implements Fighter {
     }
 
     public FighterClassAbility getVoidAbility() {
-        return (user, acceptor) -> false;
+        return new VoidAbility();
     }
 
 }

@@ -15,7 +15,7 @@ public enum Elements {
         this.element = s;
     }
 
-    int sign() {
+    public int sign() {
         return element;
     }
 }

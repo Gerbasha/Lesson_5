@@ -1,15 +1,10 @@
 package fighters.knights;
 
-import andrew.honework.com.lesson_5.fighters.base.Warrior;
 
-public class Knight extends Warrior {
+import fighters.base.Fighter;
+import fighters.base.Warrior;
 
-
-
-
-
-
-
+public class Knight extends Warrior implements Fighter {
 
 
 }

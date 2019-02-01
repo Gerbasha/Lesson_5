@@ -55,7 +55,7 @@ public class Round {
         }
     }
 
-    private void roundPhase() {
+     void roundPhase() {
         boolean isFinished = false;
         int rounds = 1;
         do {
@@ -66,11 +66,11 @@ public class Round {
             } else
                 secondFighter.attack(firstFighter);
             if (rounds++ > 10) isFinished = false;
-            if (firstFighter.getCurrentHelth() <= 0 | secondFighter.getCurrentHelth() <= 0) {
-                if (firstFighter.getCurrentHelth() <= 0)
-                    hand.pray(firstFighter);
-                if (secondFighter.getCurrentHelth() <= 0)
-                    hand.pray(secondFighter);
+//            if (firstFighter.getCurrentHelth() <= 0 | secondFighter.getCurrentHelth() <= 0) {
+//                if (firstFighter.getCurrentHelth() <= 0)
+//                    hand.pray(firstFighter);
+//                if (secondFighter.getCurrentHelth() <= 0)
+//                    hand.pray(secondFighter);
                 if (firstFighter.getCurrentHelth() <= 0 | secondFighter.getCurrentHelth() <= 0) {
                     isFinished = false;
                 }
@@ -85,7 +85,7 @@ public class Round {
 
                 winner.restoreHealth();
 
-            }
+
         } while (isFinished);
     }
 }

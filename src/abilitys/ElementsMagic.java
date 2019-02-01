@@ -5,7 +5,7 @@ import fighters.base.Fighter;
 
 public class ElementsMagic implements FighterClassAbility {
 
-    public boolean useAbility(Fighter user, Fighter acceptor) {
+    public void useAbility(Fighter user, Fighter acceptor) {
         Dragon dragon = (Dragon) user;
         float damage;
         int multiplyer = 0;
@@ -27,6 +27,5 @@ public class ElementsMagic implements FighterClassAbility {
             acceptor.receiveDamage(damage);
         }
 
-        return false;
     }
 }

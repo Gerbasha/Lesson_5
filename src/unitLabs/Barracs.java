@@ -1,14 +1,15 @@
 package unitLabs;
 
-import andrew.honework.com.lesson_5.fighters.DragonRider;
 import fighters.Cheeter;
+import fighters.DragonRider;
+import fighters.Elemental;
 import fighters.base.Fighter;
 import utilites.Helper;
 
 import java.util.Random;
 
 public class Barracs {
-    static String[] fightgerClases = {"cheeter", "darkknight", "dragon", "dragonrider", "holyknight", "knight"};
+    static String[] fightgerClases = {"elemental","vampire","ancient","cheeter", "darkknight", "dragon", "dragonrider", "holyknight", "knight"};
     static boolean isCheaterCreated;
 
     public static Fighter getNewFighter() {
@@ -53,6 +54,18 @@ public class Barracs {
             }
             case "knight": {
                 instance = Academy.createNewWarrior(fightgerClase);
+                break;
+            }
+            case "elemental": {
+                instance = new Elemental();
+                break;
+            }
+            case "vampire": {
+                instance = GraveYard.createNewUnded(fightgerClase);
+                break;
+            }
+            case "ancient": {
+                instance = GraveYard.createNewUnded(fightgerClase);
                 break;
             }
         }

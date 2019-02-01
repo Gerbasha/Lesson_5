@@ -1,10 +1,11 @@
 package abilitys;
 
-
+import abilitys.markers.OnPreRoundPhaseAction;
 import fighters.base.Fighter;
 
-public class VoidAbility implements FighterClassAbility {
+public class ReceiveElement implements FighterClassAbility, OnPreRoundPhaseAction {
     @Override
     public void useAbility(Fighter user, Fighter acceptor) {
+
     }
 }

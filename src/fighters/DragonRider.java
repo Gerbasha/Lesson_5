@@ -1,9 +1,10 @@
 package fighters;
 
-import andrew.honework.com.lesson_5.battle.Helper;
-import andrew.honework.com.lesson_5.classAbilitys.FighterClassAbility;
-import andrew.honework.com.lesson_5.classAbilitys.RideTheDragon;
-import andrew.honework.com.lesson_5.fighters.base.Fighter;
+
+import abilitys.FighterClassAbility;
+import abilitys.RideTheDragon;
+import fighters.base.Fighter;
+import utilites.Helper;
 
 public class DragonRider implements Fighter {
     Dragon pet;

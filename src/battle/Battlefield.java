@@ -1,9 +1,10 @@
 package battle;
 
-import fighters.Dragon;
 import fighters.base.Fighter;
 import unitLabs.DragonLair;
 import utilites.Helper;
+
+import static utilites.Helper.*;
 
 public class Battlefield {
     Fighter[] horde;
@@ -13,7 +14,7 @@ public class Battlefield {
     boolean isTournamentFinished;
     Round pair;
     Fighter chempion;
-    Dragon punisher=new DragonLair().getBorned();
+   // Dragon punisher=new DragonLair().getBorned();
 
     public void startBattle() {
         isTournamentFinished = false;
@@ -28,7 +29,7 @@ public class Battlefield {
             System.out.println("round " + round + " started");
             for (int i = 0; i < tableOfRounds[round - 1].length; i += 2) {
                 pair = getNextFightersPair(tableOfRounds[round - 1], i);
-                pair.fight(this::punish);
+                pair.roundPhase();
 
                 if (round < stageCount - 1) nextTournamentStage[winners++] = pair.getWinner();
                 else {
@@ -75,7 +76,7 @@ public class Battlefield {
 
     }
 
-    void punish(Fighter fighter){
-        punisher.attack(fighter);
-    }
+//    void punish(Fighter fighter){
+//        punisher.attack(fighter);
+//    }
 }

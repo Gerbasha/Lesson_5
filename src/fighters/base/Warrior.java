@@ -1,8 +1,9 @@
 package fighters.base;
 
-import andrew.honework.com.lesson_5.battle.Helper;
-import andrew.honework.com.lesson_5.classAbilitys.FighterClassAbility;
-import andrew.honework.com.lesson_5.classAbilitys.Shield;
+
+import abilitys.FighterClassAbility;
+import abilitys.Shield;
+import utilites.Helper;
 
 public abstract class Warrior implements Fighter {
     private String name;

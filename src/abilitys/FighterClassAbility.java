@@ -1,5 +1,7 @@
 package abilitys;
 
+import fighters.base.Fighter;
+
 public interface FighterClassAbility {
-    boolean useAbility(Fighter user, Fighter acceptor);
+    void useAbility(Fighter user, Fighter acceptor);
 }

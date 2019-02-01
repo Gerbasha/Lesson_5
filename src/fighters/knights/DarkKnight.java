@@ -1,8 +1,9 @@
 package fighters.knights;
 
-import andrew.honework.com.lesson_5.classAbilitys.FighterClassAbility;
-import andrew.honework.com.lesson_5.classAbilitys.VampireHeal;
-import andrew.honework.com.lesson_5.fighters.base.Fighter;
+
+import abilitys.FighterClassAbility;
+import abilitys.VampireHeal;
+import fighters.base.Fighter;
 
 public class DarkKnight extends Knight {
     FighterClassAbility ability;

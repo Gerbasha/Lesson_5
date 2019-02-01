@@ -1,10 +1,12 @@
 package abilitys;
 
-import andrew.honework.com.lesson_5.fighters.base.Fighter;
 
-public class VampireHeal implements FighterClassAbility {
+import abilitys.markers.OnPostRoundPhaseAction;
+import fighters.base.Fighter;
+
+public class VampireHeal implements FighterClassAbility , OnPostRoundPhaseAction {
     @Override
-    public boolean useAbility(Fighter user, Fighter acceptor) {
+    public void useAbility(Fighter user, Fighter acceptor) {
         if( user.getCurrentHelth()<user.getHelth()){
             if (((user.getCurrentHelth() + user.getAttak() - acceptor.getDeffence() / 2) > user.getHelth())) {
                 System.out.println("Used darkheal");
@@ -14,6 +16,5 @@ public class VampireHeal implements FighterClassAbility {
                 user.setCurrentHelth((user.getAttak() - acceptor.getDeffence()) / 2);
             }
         }
-        return false;
     }
 }

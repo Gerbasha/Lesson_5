@@ -6,7 +6,7 @@ import fighters.base.ElementalFighter;
 import fighters.base.Fighter;
 import utilites.Helper;
 
-public class Dragon implements ElementalFighter {
+public class Dragon implements ElementalFighter, Fighter {
     FighterClassAbility ability;
     private String name;
     int elements;
@@ -17,6 +17,12 @@ public class Dragon implements ElementalFighter {
 
 
     public Dragon() {
+        setName("generate");
+        setHelth();
+        setCurrentHelth(helth);
+        setAttak();
+        setDeffence();
+        setAbility(new ElementsMagic());
     }
 
 
@@ -108,6 +114,11 @@ public class Dragon implements ElementalFighter {
 
     public void setCurrentHelth(float currentHelth) {
         this.currentHelth = currentHelth;
+    }
+
+    @Override
+    public void setAbility(FighterClassAbility ability) {
+
     }
 
     public void setHelth() {
