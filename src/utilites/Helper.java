@@ -81,10 +81,10 @@ public class Helper {
         }
     }
 
-    public static void prepairRound(Fighter[][] tableOfRounds, Fighter[] horde, int round) {
+    public static void prepairRound(Warrior[][] tableOfRounds, Warrior[] horde, int round) {
         if (tableOfRounds != null) {
 
-            tableOfRounds[round - 1] = new Fighter[horde.length];
+            tableOfRounds[round - 1] = new Warrior[horde.length];
             for (int i = 0; i < horde.length; i++) {
                 tableOfRounds[round - 1][i] = horde[i];
             }
