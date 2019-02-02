@@ -39,6 +39,7 @@ public class Vampire implements Fighter {
         this.helth = Math.round(Math.abs(Helper.getRandomHelper().nextGaussian() * 50) + 100);
 
     }
+
     private void setDeffence() {
         this.deffence = (float) (Math.abs(Helper.getRandomHelper().nextGaussian())) % 1;
     }
@@ -74,12 +75,13 @@ public class Vampire implements Fighter {
 
     @Override
     public void receiveDamage(float damage) {
+        currentHelth += damage * deffence;
 
     }
 
     @Override
     public void attack(Fighter fighter) {
-
+        fighter.receiveDamage(attak+atackModifier);
     }
 
     @Override

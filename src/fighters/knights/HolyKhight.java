@@ -16,7 +16,6 @@ public class HolyKhight extends Knight {
     public void attack(Fighter fighter) {
         super.attack(fighter);
         fighter.receiveDamage(this.getAttak());
-        this.ability.useAbility(this,fighter);
     }
 }
 

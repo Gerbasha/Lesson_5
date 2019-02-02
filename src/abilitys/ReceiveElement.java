@@ -10,6 +10,7 @@ import static unitLabs.Barracs.createElementTalant;
 public class ReceiveElement implements FighterClassAbility, OnPreRoundPhaseAction {
     @Override
     public void useAbility(Fighter user, Fighter acceptor) {
+        System.out.println("receive new element");
         if (user instanceof AncientVampire)
             ((AncientVampire)user).setElement(createElementTalant());
         if (acceptor instanceof ElementalFighter){

@@ -33,7 +33,6 @@ public abstract class Warrior implements Fighter {
     @Override
     public void attack(Fighter fighter) {
         fighter.receiveDamage(this.getAttak());
-        ability.useAbility(this,fighter);
         System.out.println(this.getName() + "[" + this.getCurrentHelth() + "] " + " deal to " +
                 fighter.getName() + "[" + fighter.getCurrentHelth() + "]" +
                 " " + getAttak() + " damage");

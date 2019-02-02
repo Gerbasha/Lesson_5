@@ -6,6 +6,7 @@ import fighters.base.Fighter;
 public class ElementalStrike implements FighterClassAbility {
     @Override
     public void useAbility(Fighter user, Fighter acceptor) {
+        System.out.println("Used element strike");
         ElementalFighter eFighter = null;
         int multiplyer = 0;
         int element = 0b1000;

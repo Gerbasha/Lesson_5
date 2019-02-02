@@ -9,6 +9,7 @@ import fighters.base.Fighter;
 public class ReduceAbilitys implements FighterClassAbility, OnPreRoundPhaseAction, OnPostRoundPhaseAction {
     @Override
     public void useAbility(Fighter user, Fighter acceptor) {
+        System.out.println("abilities reduced");
         if (acceptor.getAbility()!=null)
         {
             Cheeter cheeter = (Cheeter)user;

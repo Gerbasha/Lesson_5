@@ -6,6 +6,7 @@ import fighters.base.Fighter;
 public class ElementsMagic implements FighterClassAbility {
 
     public void useAbility(Fighter user, Fighter acceptor) {
+        System.out.println("used elemental magic");
         Dragon dragon = (Dragon) user;
         float damage;
         int multiplyer = 0;

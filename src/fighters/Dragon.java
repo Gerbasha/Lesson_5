@@ -2,11 +2,12 @@ package fighters;
 
 import abilitys.ElementsMagic;
 import abilitys.FighterClassAbility;
+import abilitys.markers.OnPreRoundPhaseAction;
 import fighters.base.ElementalFighter;
 import fighters.base.Fighter;
 import utilites.Helper;
 
-public class Dragon implements ElementalFighter, Fighter {
+public class Dragon implements ElementalFighter, Fighter, OnPreRoundPhaseAction {
     FighterClassAbility ability;
     private String name;
     int elements;
@@ -29,8 +30,7 @@ public class Dragon implements ElementalFighter, Fighter {
 
     @Override
     public void attack(Fighter fighter) {
-        this.ability.useAbility(this, fighter);
-        fighter.receiveDamage(this.getAttak());
+        fighter.receiveDamage(this.getAttak()+atackModifier);
         System.out.println(this.getName() + "[" + this.getCurrentHelth() + "] " + " deal to " +
                 fighter.getName() + "[" + fighter.getCurrentHelth() + "]" +
                 " " + getAttak() + " damage");
@@ -71,6 +71,11 @@ public class Dragon implements ElementalFighter, Fighter {
 
     public int getElements() {
         return elements;
+    }
+
+    @Override
+    public void increaseMultyplayAtack(float mult) {
+        atackModifier = mult;
     }
 
     public void setElements(int elements) {

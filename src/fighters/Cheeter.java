@@ -60,7 +60,6 @@ public class Cheeter implements Fighter {
 
     @Override
     public void attack(Fighter fighter) {
-        ability.useAbility(this,fighter);
         fighter.receiveDamage(this.getAttak());
 
         System.out.println(this.getName() + "[" + this.getCurrentHelth() + "] " + " deal to " +

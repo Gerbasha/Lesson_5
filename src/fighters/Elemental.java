@@ -91,7 +91,7 @@ public class Elemental implements Fighter,ElementalFighter, ActionPostFight {
 
     @Override
     public void attack(Fighter fighter) {
-
+        fighter.receiveDamage(attak+atackModifier);
     }
 
     @Override

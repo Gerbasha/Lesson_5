@@ -29,7 +29,9 @@ public class Battlefield {
             System.out.println("round " + round + " started");
             for (int i = 0; i < tableOfRounds[round - 1].length; i += 2) {
                 pair = getNextFightersPair(tableOfRounds[round - 1], i);
+                pair.preRoundPhase();
                 pair.roundPhase();
+                pair.postRoundPhase();
 
                 if (round < stageCount - 1) nextTournamentStage[winners++] = pair.getWinner();
                 else {
