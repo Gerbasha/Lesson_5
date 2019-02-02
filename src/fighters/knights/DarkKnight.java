@@ -1,15 +1,15 @@
 package fighters.knights;
 
 
-import abilitys.FighterClassAbility;
+import abilitys.FighterClassAbilitys;
 import abilitys.LifeDrain;
 import fighters.base.Fighter;
 
 public class DarkKnight extends Knight {
-    FighterClassAbility ability;
+    FighterClassAbilitys ability;
 
     public DarkKnight() {
-        this.ability = new LifeDrain();
+        super.getAbilities().add(new LifeDrain());
     }
 
     @Override

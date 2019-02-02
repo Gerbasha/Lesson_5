@@ -1,12 +1,15 @@
 package fighters.unded;
 
-import abilitys.FighterClassAbility;
+import abilitys.FighterClassAbilitys;
 import abilitys.VampiricPover;
 import fighters.base.Fighter;
+import fighters.base.Warrior;
 import utilites.Helper;
 
-public class Vampire implements Fighter {
-    FighterClassAbility ability;
+import java.util.ArrayList;
+
+public class Vampire extends Warrior implements Fighter {
+    FighterClassAbilitys ability;
     private String name;
     private float attak;
     float deffence;
@@ -20,84 +23,68 @@ public class Vampire implements Fighter {
         setCurrentHelth(helth);
         setAttak();
         setDeffence();
-        setAbility(new VampiricPover());
+        setAbilities(new VampiricPover());
     }
 
-
-    private void setName(String name) {
+    public void setName(String name) {
         if (name != "generate")
             this.name = name;
         else this.name = Helper.generateName();
     }
 
-
-    private void setAttak() {
+    public void setAttak() {
         this.attak = Math.round(Math.abs(Helper.getRandomHelper().nextGaussian() * 10) + 10);
     }
 
-    private void setHelth() {
+    public void setHelth() {
         this.helth = Math.round(Math.abs(Helper.getRandomHelper().nextGaussian() * 50) + 100);
-
     }
 
-    private void setDeffence() {
+    public void setDeffence() {
         this.deffence = (float) (Math.abs(Helper.getRandomHelper().nextGaussian())) % 1;
     }
 
-    @Override
     public String getName() {
         return name;
     }
 
-    @Override
     public float getHelth() {
         return helth;
     }
 
-    @Override
     public float getCurrentHelth() {
         return currentHelth;
     }
 
-    @Override
-    public FighterClassAbility getAbility() {
-        return ability;
+    public ArrayList<FighterClassAbilitys> getAbilities() {
+        return super.getAbilities();
     }
 
     public void setCurrentHelth(float currentHelth) {
         this.currentHelth = currentHelth;
     }
 
-    @Override
-    public void setAbility(FighterClassAbility ability) {
-
+    public void setAbilities(FighterClassAbilitys abilities) {
+        this.ability = abilities;
     }
 
-    @Override
     public void receiveDamage(float damage) {
-        currentHelth += damage * deffence;
-
+        this.currentHelth -= damage * deffence;
     }
 
-    @Override
     public void attack(Fighter fighter) {
-        fighter.receiveDamage(attak+atackModifier);
+        fighter.receiveDamage(attak + atackModifier);
     }
 
-    @Override
     public float getAttak() {
         return attak;
     }
 
-    @Override
     public float getDeffence() {
         return deffence;
     }
 
-    @Override
-    public void restoreHealth() {
-
-    }
+    public void restore() {    }
 
     public void setAttak(float attak) {
         this.attak = attak;

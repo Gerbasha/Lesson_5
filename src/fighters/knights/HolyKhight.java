@@ -1,15 +1,15 @@
 package fighters.knights;
 
 
-import abilitys.FighterClassAbility;
+import abilitys.FighterClassAbilitys;
 import abilitys.Heal;
 import fighters.base.Fighter;
 
 public class HolyKhight extends Knight {
-    FighterClassAbility ability;
+    FighterClassAbilitys ability;
 
     public HolyKhight() {
-        this.ability = new Heal();
+        super.getAbilities().add(new Heal()) ;
     }
 
     @Override

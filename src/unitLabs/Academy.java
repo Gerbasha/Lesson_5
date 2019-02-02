@@ -7,6 +7,7 @@ import fighters.knights.DarkKnight;
 import fighters.knights.HolyKhight;
 import fighters.knights.Knight;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Academy {
@@ -19,21 +20,21 @@ public class Academy {
     }
 
 
-    Warrior ressurectThisWarrior(Warrior warrior) {
-
-       if (warrior instanceof HolyKhight){
-            resurected = new HolyKhight();
-        } else  if (warrior instanceof DarkKnight){
-            resurected = new DarkKnight();
-        } else  resurected = new Knight();
-
-        resurected.setName(warrior.getName());
-        resurected.setAttak(warrior.getAttak());
-        resurected.setDeffence(warrior.getDeffence());
-        resurected.setFighterClassAbility(warrior.getFighterClassBonus());
-
-        return resurected;
-    }
+//    Warrior ressurectThisWarrior(Warrior warrior) {
+//
+//       if (warrior instanceof HolyKhight){
+//            resurected = new HolyKhight();
+//        } else  if (warrior instanceof DarkKnight){
+//            resurected = new DarkKnight();
+//        } else  resurected = new Knight();
+//
+//        resurected.setName(warrior.getName());
+//        resurected.setAttak(warrior.getAttak());
+//        resurected.setDeffence(warrior.getDeffence());
+//        resurected.setFighterClassAbility(warrior.getAbilities());
+//
+//        return resurected;
+//    }
 
     static Warrior createNewWarrior(String warrior) {
         switch (warrior) {
@@ -66,6 +67,7 @@ public class Academy {
         learned.setAttak();
         learned.setDeffence();
         learned.setShild();
-        learned.setAbility(new Shield());
+        learned.setAbilities(new ArrayList<>());
+        learned.getAbilities().add(new Shield());
     }
 }

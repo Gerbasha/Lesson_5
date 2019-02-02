@@ -2,14 +2,14 @@ package abilitys;
 
 import abilitys.markers.OnPreRoundPhaseAction;
 import fighters.base.ElementalFighter;
-import fighters.base.Fighter;
+import fighters.base.Warrior;
 import fighters.unded.AncientVampire;
 
 import static unitLabs.Barracs.createElementTalant;
 
-public class ReceiveElement implements FighterClassAbility, OnPreRoundPhaseAction {
+public class ReceiveElement implements FighterClassAbilitys, OnPreRoundPhaseAction {
     @Override
-    public void useAbility(Fighter user, Fighter acceptor) {
+    public void useAbilitys(Warrior user, Warrior acceptor) {
         System.out.println("receive new element");
         if (user instanceof AncientVampire)
             ((AncientVampire)user).setElement(createElementTalant());

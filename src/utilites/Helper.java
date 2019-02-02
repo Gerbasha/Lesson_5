@@ -5,6 +5,7 @@ import fighters.Cheeter;
 import fighters.Dragon;
 import fighters.DragonRider;
 import fighters.base.Fighter;
+import fighters.base.Warrior;
 import unitLabs.Barracs;
 
 import java.util.Random;
@@ -38,9 +39,9 @@ public class Helper {
                 lastName[Math.abs(getRandomHelper().nextInt() % 8)];
     }
 
-    public static void printSummary(Fighter[][] table) {//todo not null
-        Fighter f1 = null;
-        Fighter f2 = null;
+    public static void printSummary(Warrior[][] table) {//todo not null
+        Warrior f1 = null;
+        Warrior f2 = null;
         for (int i = 0; i < table.length - 1; i++) {
             for (int j = 0; j < table[i].length; j++) {
                 if (j == table[i].length - 1) {
@@ -71,9 +72,9 @@ public class Helper {
         }
     }
 
-    public static void printSummary(Fighter[] horde) {
+    public static void printSummary(Warrior[] horde) {
         System.out.println("This fighters are ready for tournament:");
-        for (Fighter f : horde) {
+        for (Warrior f : horde) {
             System.out.println(f.getClass().getSimpleName() + " " + f.getName() + "[" + f.getHelth() + "] " + " a:" + f.getAttak() + " d:" + f.getDeffence());
 
 
@@ -91,11 +92,11 @@ public class Helper {
 
     }
 
-    public static Round getNextFightersPair(Fighter[] horde, int i) {
+    public static Round getNextFightersPair(Warrior[] horde, int i) {
         Round couple = new Round();
 
-        Fighter first = horde[i];
-        Fighter second = horde[i + 1];
+        Warrior first = horde[i];
+        Warrior second = horde[i + 1];
         if (second instanceof Cheeter) {
             couple.serFirstFighter(second);
             couple.setSecondFighter(first);

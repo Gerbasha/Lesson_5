@@ -1,11 +1,12 @@
 package abilitys;
 
+import abilitys.markers.OnPreRoundPhaseAction;
 import fighters.base.ElementalFighter;
-import fighters.base.Fighter;
+import fighters.base.Warrior;
 
-public class ElementalStrike implements FighterClassAbility {
+public class ElementalStrike implements FighterClassAbilitys, OnPreRoundPhaseAction {
     @Override
-    public void useAbility(Fighter user, Fighter acceptor) {
+    public void useAbilitys(Warrior user, Warrior acceptor) {
         System.out.println("Used element strike");
         ElementalFighter eFighter = null;
         int multiplyer = 0;
@@ -21,10 +22,10 @@ public class ElementalStrike implements FighterClassAbility {
 
         } else {
             for (int i = 0; i < 4; i++) {
-                multiplyer += ((eFighter.getElements() & element) == element) ? 1 : 0;
+                multiplyer += ((((ElementalFighter)user).getElements() & element) == element) ? 1 : 0;
                 element >>= 1;
             }
         }
-        ((ElementalFighter)user).increaseMultyplayAtack(multiplyer>0? 3:1);
+        ((ElementalFighter)user).increaseMultyplayAtack(multiplyer>0? multiplyer*3:1);
     }
 }

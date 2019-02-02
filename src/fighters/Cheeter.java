@@ -1,12 +1,15 @@
 package fighters;
 
-import abilitys.FighterClassAbility;
+import abilitys.FighterClassAbilitys;
 import abilitys.ReduceAbilitys;
-import abilitys.VoidAbility;
+import abilitys.VoidAbilitys;
 import fighters.base.Fighter;
+import fighters.base.Warrior;
 
-public class Cheeter implements Fighter {
-    FighterClassAbility ability;
+import java.util.ArrayList;
+
+
+public class Cheeter extends Warrior implements Fighter {
     private String name;
     private float attak;
     private float deffence;
@@ -20,37 +23,33 @@ public class Cheeter implements Fighter {
         this.attak = 30;
         this.deffence = 0.5f;
 
-        this.ability = new ReduceAbilitys();
+        this.getAbilities() = new ArrayList<>();
+        this.getAbilities().add(new ReduceAbilitys());
     }
 
-    @Override
     public String getName() {
         return name;
     }
 
-    @Override
     public float getHelth() {
         return helth;
     }
 
-    @Override
     public float getCurrentHelth() {
         return currentHelth;
     }
 
-    @Override
-    public FighterClassAbility getAbility() {
-        return ability;
+    public ArrayList<FighterClassAbilitys> getAbilities() {
+        return super.getAbilities();
     }
 
-    @Override
     public void setCurrentHelth(float heal) {
         this.currentHelth = heal;
     }
 
-    @Override
-    public void setAbility(FighterClassAbility ability) {
-        this.ability = ability;
+
+    public void setAbilities(ArrayList<FighterClassAbilitys> abilities) {
+        super.setAbilities(abilities);
     }
 
     @Override
@@ -58,33 +57,29 @@ public class Cheeter implements Fighter {
         currentHelth -= damage * deffence;
     }
 
-    @Override
-    public void attack(Fighter fighter) {
+
+    public void attack(Warrior fighter) {
         fighter.receiveDamage(this.getAttak());
 
-        System.out.println(this.getName() + "[" + this.getCurrentHelth() + "] " + " deal to " +
-                fighter.getName() + "[" + fighter.getCurrentHelth() + "]" +
-                " " + getAttak() + " damage");
+        printBrifing(this,fighter);
 
     }
 
-    @Override
     public float getAttak() {
         return attak;
     }
 
-    @Override
     public float getDeffence() {
         return deffence;
     }
 
     @Override
-    public void restoreHealth() {
+    public void restore() {
         this.currentHelth = this.helth;
     }
 
-    public FighterClassAbility getVoidAbility() {
-        return new VoidAbility();
+    public ArrayList<FighterClassAbilitys> getVoidAbilitys(Warrior fighter) {
+        return new VoidAbilitys(fighter);
     }
 
 }

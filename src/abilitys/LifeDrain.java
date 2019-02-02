@@ -2,11 +2,11 @@ package abilitys;
 
 
 import abilitys.markers.OnPostRoundPhaseAction;
-import fighters.base.Fighter;
+import fighters.base.Warrior;
 
-public class LifeDrain implements FighterClassAbility , OnPostRoundPhaseAction {
+public class LifeDrain implements FighterClassAbilitys, OnPostRoundPhaseAction {
     @Override
-    public void useAbility(Fighter user, Fighter acceptor) {
+    public void useAbilitys(Warrior user, Warrior acceptor) {
         if( user.getCurrentHelth()<user.getHelth()){
             if (((user.getCurrentHelth() + user.getAttak()* acceptor.getDeffence() / 2) > user.getHelth())) {
                 System.out.println("Used darkheal");

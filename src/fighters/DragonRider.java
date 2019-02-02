@@ -1,14 +1,17 @@
 package fighters;
 
 
-import abilitys.FighterClassAbility;
+import abilitys.FighterClassAbilitys;
 import abilitys.RideTheDragon;
 import fighters.base.Fighter;
+import fighters.base.Warrior;
 import utilites.Helper;
 
-public class DragonRider implements Fighter {
+import java.util.ArrayList;
+
+public class DragonRider extends Warrior implements Fighter {
     Dragon pet;
-    FighterClassAbility ability;
+    FighterClassAbilitys ability;
     private String name;
     private float attak;
     private float deffence;
@@ -25,22 +28,18 @@ public class DragonRider implements Fighter {
         this.ability = new RideTheDragon();
     }
 
-    @Override
     public String getName() {
         return name;
     }
 
-    @Override
     public float getHelth() {
         return helth;
     }
 
-    @Override
     public float getCurrentHelth() {
         return currentHelth;
     }
 
-    @Override
     public void setCurrentHelth(float heal) {
         this.currentHelth = heal;
     }
@@ -54,20 +53,17 @@ public class DragonRider implements Fighter {
         else currentHelth -= damage * deffence;
     }
 
-    @Override
-    public void attack(Fighter fighter) {
+    public void attack(Warrior fighter) {
         if (fighter instanceof Dragon)
-            this.ability.useAbility(this, (Dragon) fighter);
+            this.ability.useAbilitys(this, (Dragon) fighter);
         if (pet != null && pet.getCurrentHelth() > 0) {
-            pet.ability.useAbility(pet, fighter);
+            pet.getAbilities().useAbilitys(pet, fighter);
             pet.attack(fighter);
         }
 
         float curentDamage = getAttak();
         fighter.receiveDamage(curentDamage);
-        System.out.println(this.getName() + "[" + this.getCurrentHelth() + "] " + " deal to " +
-                fighter.getName() + "[" + fighter.getCurrentHelth() + "]" +
-                " " + getAttak() + " damage");
+        printBrifing(this,fighter);
     }
 
 
@@ -83,7 +79,7 @@ public class DragonRider implements Fighter {
     }
 
     @Override
-    public void restoreHealth() {
+    public void restore() {
         this.currentHelth = this.helth;
     }
 
@@ -96,11 +92,11 @@ public class DragonRider implements Fighter {
             this.pet = pet;
     }
 
-    public FighterClassAbility getAbility() {
-        return ability;
+    public ArrayList<FighterClassAbilitys> getAbilities() {
+        return super.getAbilities();
     }
 
-    public void setAbility(FighterClassAbility ability) {
-        this.ability = ability;
+    public void setAbilities(FighterClassAbilitys abilities) {
+        this.ability = abilities;
     }
 }

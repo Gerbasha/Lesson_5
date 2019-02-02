@@ -1,20 +1,20 @@
 package abilitys;
 
 
-import abilitys.markers.OnPostRoundPhaseAction;
 import abilitys.markers.OnPreRoundPhaseAction;
 import fighters.Cheeter;
-import fighters.base.Fighter;
+import fighters.base.Warrior;
 
-public class ReduceAbilitys implements FighterClassAbility, OnPreRoundPhaseAction, OnPostRoundPhaseAction {
+public class ReduceAbilitys implements FighterClassAbilitys, OnPreRoundPhaseAction {
     @Override
-    public void useAbility(Fighter user, Fighter acceptor) {
-        System.out.println("abilities reduced");
-        if (acceptor.getAbility()!=null)
+    public void useAbilitys(Warrior user, Warrior acceptor) {
+
+        if (acceptor.getAbilities()!=null & !(acceptor.getAbilities().contains(new VoidAbilitys()) ))
         {
+            System.out.println("abilities reducing");
             Cheeter cheeter = (Cheeter)user;
-            System.out.println("Enemy abilitys down");
-            acceptor.setAbility(cheeter.getVoidAbility());
+            System.out.println("Enemy abilitys are down");
+            acceptor.setAbilities(cheeter.getVoidAbilitys(acceptor));
         }
     }
 }

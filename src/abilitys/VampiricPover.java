@@ -1,12 +1,12 @@
 package abilitys;
 
 import abilitys.markers.OnPostRoundPhaseAction;
-import fighters.base.Fighter;
+import fighters.base.Warrior;
 import fighters.unded.Vampire;
 
-public class VampiricPover implements FighterClassAbility, OnPostRoundPhaseAction {
+public class VampiricPover implements FighterClassAbilitys, OnPostRoundPhaseAction {
     @Override
-    public void useAbility(Fighter user, Fighter acceptor) {
+    public void useAbilitys(Warrior user, Warrior acceptor) {
 
         if (user instanceof Vampire) {
             if (((user.getCurrentHelth() + user.getAttak() * acceptor.getDeffence()) > user.getHelth())) {

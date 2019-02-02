@@ -1,11 +1,11 @@
 package abilitys;
 
 
-import fighters.base.Fighter;
+import fighters.base.Warrior;
 
-public class Shield implements FighterClassAbility {
+public class Shield implements FighterClassAbilitys {
     @Override
-    public  void useAbility(Fighter user, Fighter acceptor) {
+    public  void useAbilitys(Warrior user, Warrior acceptor) {
 
     }
 }

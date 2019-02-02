@@ -2,7 +2,7 @@ package fighters;
 
 
 import abilitys.ElementalStrike;
-import abilitys.FighterClassAbility;
+import abilitys.FighterClassAbilitys;
 import fighters.base.ActionPostFight;
 import fighters.base.ElementalFighter;
 import fighters.base.Fighter;
@@ -13,7 +13,7 @@ import static unitLabs.Barracs.createElementTalant;
 
 public class Elemental implements Fighter,ElementalFighter, ActionPostFight {
     int element;
-    FighterClassAbility ability;
+    FighterClassAbilitys ability;
     private String name;
     private float attak;
     float deffence;
@@ -28,7 +28,7 @@ public class Elemental implements Fighter,ElementalFighter, ActionPostFight {
         setAttak();
         setDeffence();
         element = createElementTalant();
-        setAbility(new ElementalStrike());
+        setAbilities(new ElementalStrike());
 
     }
 
@@ -80,8 +80,8 @@ public class Elemental implements Fighter,ElementalFighter, ActionPostFight {
         this.element = element;
     }
 
-    public void setAbility(FighterClassAbility ability) {
-        this.ability = ability;
+    public void setAbilities(FighterClassAbilitys abilities) {
+        this.ability = abilities;
     }
 
     @Override
@@ -89,23 +89,20 @@ public class Elemental implements Fighter,ElementalFighter, ActionPostFight {
 
     }
 
-    @Override
     public void attack(Fighter fighter) {
         fighter.receiveDamage(attak+atackModifier);
     }
 
-    @Override
     public float getAttak() {
         return attak;
     }
 
-    @Override
     public float getDeffence() {
         return deffence;
     }
 
     @Override
-    public void restoreHealth() {
+    public void restore() {
         this.currentHelth = helth;
     }
 
@@ -119,23 +116,21 @@ public class Elemental implements Fighter,ElementalFighter, ActionPostFight {
     }
 
 
-    @Override
+
     public String getName() {
         return name;
     }
 
-    @Override
     public float getHelth() {
         return helth;
     }
 
-    @Override
     public float getCurrentHelth() {
         return currentHelth;
     }
 
-    @Override
-    public FighterClassAbility getAbility() {
+
+    public FighterClassAbilitys getAbilities() {
         return ability;
     }
 

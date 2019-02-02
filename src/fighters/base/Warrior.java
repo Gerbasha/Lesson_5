@@ -1,9 +1,12 @@
 package fighters.base;
 
 
-import abilitys.FighterClassAbility;
+import abilitys.FighterClassAbilitys;
 import abilitys.Shield;
+import abilitys.VoidAbilitys;
 import utilites.Helper;
+
+import java.util.ArrayList;
 
 public abstract class Warrior implements Fighter {
     private String name;
@@ -11,47 +14,51 @@ public abstract class Warrior implements Fighter {
     private float deffence;
     public float helth;
     private float currentHelth;
-    FighterClassAbility ability;
+    ArrayList<FighterClassAbilitys> abilities;
     float shild;
 
-    @Override
     public String getName() {
         return name;
     }
 
-    @Override
+
     public float getCurrentHelth() {
         return currentHelth;
     }
 
     @Override
     public void receiveDamage(float damage) {
-       if (ability instanceof Shield)if (Helper.getRandomHelper().nextGaussian() <shild)
-            currentHelth -= damage * deffence;else System.out.println("Shield mirror the attak");
+        Shield shield = new Shield();
+        if (abilities.contains(shield)) if (Helper.getRandomHelper().nextGaussian() < shild)
+            currentHelth -= damage * deffence;
+        else System.out.println("Shield mirror the attak");
     }
 
-    @Override
     public void attack(Fighter fighter) {
+
         fighter.receiveDamage(this.getAttak());
         System.out.println(this.getName() + "[" + this.getCurrentHelth() + "] " + " deal to " +
-                fighter.getName() + "[" + fighter.getCurrentHelth() + "]" +
+                ((Warrior) fighter).getName() + "[" + ((Warrior) fighter).getCurrentHelth() + "]" +
                 " " + getAttak() + " damage");
 
     }
 
-    @Override
+    // @Override
     public float getAttak() {
         return attak;
     }
 
-    @Override
+    //  @Override
     public float getDeffence() {
         return deffence;
     }
 
     @Override
-    public void restoreHealth() {
-        this.currentHelth = this.helth;
+    public void restore() {
+        currentHelth = helth;
+        if (abilities instanceof VoidAbilitys) {
+            this.abilities = ((VoidAbilitys) abilities).restoreTrueAbilitys();
+        }
     }
 
     public void setName(String name) {
@@ -77,13 +84,13 @@ public abstract class Warrior implements Fighter {
     }
 
 
-    public FighterClassAbility getFighterClassBonus() {
-        return ability;
+    public ArrayList<FighterClassAbilitys> getAbilities() {
+        return abilities;
     }
 
 
-    public void setFighterClassAbility(FighterClassAbility fighterClassAbility) {
-        this.ability = fighterClassAbility;
+    public void setFighterClassAbility(FighterClassAbilitys fighterClassAbility) {
+        this.abilities.add(fighterClassAbility);
     }
 
     public void setHelth() {
@@ -96,7 +103,6 @@ public abstract class Warrior implements Fighter {
         }
     }
 
-    @Override
     public float getHelth() {
         return helth;
     }
@@ -105,14 +111,12 @@ public abstract class Warrior implements Fighter {
         this.helth = helth;
     }
 
-    @Override
-    public FighterClassAbility getAbility() {
-        return ability;
-    }
-
-    @Override
-    public void setAbility(FighterClassAbility ability) {
-        this.ability = ability;
+    //    public FighterClassAbilitys getAbilities() {
+//        return abilities;
+//    }
+//
+    public void setAbilities(ArrayList<FighterClassAbilitys> abilities) {
+        this.abilities = abilities;
     }
 
     public float getShild() {
@@ -120,9 +124,16 @@ public abstract class Warrior implements Fighter {
     }
 
     public void setShild() {
-        this.shild = (float) ((Math.abs(Helper.getRandomHelper().nextGaussian())) % 1)/2;
+        this.shild = (float) ((Math.abs(Helper.getRandomHelper().nextGaussian())) % 1) / 2;
     }
-    boolean isAlive(){
-      return currentHelth>0;
+
+    boolean isAlive() {
+        return currentHelth > 0;
+    }
+
+    public static void printBrifing(Warrior fighter1, Warrior fighter2) {
+        System.out.println(fighter1.getName() + "[" + fighter1.getCurrentHelth() + "] " + " deal to " +
+                fighter2.getName() + "[" + fighter2.getCurrentHelth() + "]" +
+                " " + fighter1.getAttak() + " damage");
     }
 }

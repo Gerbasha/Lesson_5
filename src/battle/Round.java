@@ -4,28 +4,27 @@ package battle;
 import abilitys.GodsHand;
 import abilitys.markers.OnPostRoundPhaseAction;
 import abilitys.markers.OnPreRoundPhaseAction;
-import fighters.Dragon;
-import fighters.DragonRider;
 import fighters.base.Fighter;
+import fighters.base.Warrior;
 
 public class Round {
-    private Fighter firstFighter;
-    private Fighter secondFighter;
-    private Fighter winner;
+    private Warrior firstFighter;
+    private Warrior secondFighter;
+    private Warrior winner;
 
-    public void serFirstFighter(Fighter fighter) {
+    public void serFirstFighter(Warrior fighter) {
         this.firstFighter = fighter;
     }
 
-    public void setSecondFighter(Fighter fighter) {
+    public void setSecondFighter(Warrior fighter) {
         this.secondFighter = fighter;
     }
 
     Fighter fight(GodsHand hand) {
 
 
-        preRoundPhase();
-        roundPhase();
+        preTurnPhase();
+        startRound();
         postRaundPhase();
 
         return winner;
@@ -35,40 +34,38 @@ public class Round {
 
     }
 
-    public Fighter getFirstFighter() {
+    public Warrior getFirstFighter() {
         return firstFighter;
     }
 
-    public Fighter getSecondFighter() {
+    public Warrior getSecondFighter() {
         return secondFighter;
     }
 
-    Fighter getWinner() {
+    Warrior getWinner() {
         return winner;
     }
 
-    void preRoundPhase() {
-        if (firstFighter.getAbility() instanceof OnPreRoundPhaseAction) {
-            firstFighter.getAbility().useAbility(firstFighter, secondFighter);
+    void preTurnPhase() {
+
+        if (firstFighter.getAbilities().contains(new OnPreRoundPhaseAction())) {
+            firstFighter.getAbilities().useAbility(firstFighter, secondFighter);
         }
         if (secondFighter instanceof OnPreRoundPhaseAction) {
-            secondFighter.getAbility().useAbility(secondFighter, firstFighter);
+            secondFighter.getAbilities().useAbility(secondFighter, firstFighter);
         }
     }
 
-    void roundPhase() {
-        boolean isFinished = false;
+    void startRound() {
+        boolean isFinished = true;
         int rounds = 1;
+        if (winner != null) isFinished = false;
 
+        while (isFinished) {
+          preTurnPhase();
+          turnPhase();
+          postRaundPhase();
 
-        do {
-            firstFighter.attack(secondFighter);
-            if (firstFighter instanceof DragonRider && secondFighter instanceof Dragon) {
-                winner = firstFighter;
-                isFinished = false;
-            } else
-                secondFighter.attack(firstFighter);
-            if (rounds++ > 10) isFinished = false;
 //            if (firstFighter.getCurrentHelth() <= 0 | secondFighter.getCurrentHelth() <= 0) {
 //                if (firstFighter.getCurrentHelth() <= 0)
 //                    hand.pray(firstFighter);
@@ -77,28 +74,36 @@ public class Round {
             if (firstFighter.getCurrentHelth() <= 0 | secondFighter.getCurrentHelth() <= 0) {
                 isFinished = false;
             }
+            if (rounds++ > 10) isFinished = false;
 
 
-            if (winner == null) {
-                System.out.println(firstFighter.getCurrentHelth() > secondFighter.getCurrentHelth() ?
-                        firstFighter.getClass().getSimpleName() + " " + firstFighter.getName() + " winn" :
-                        secondFighter.getClass().getSimpleName() + " " + secondFighter.getName() + " winn");
-                winner = (firstFighter.getCurrentHelth() > 0) ? firstFighter : secondFighter;
-            } else System.out.println(winner.getClass().getSimpleName() + " " + secondFighter.getName() + " winn");
-
-            winner.restoreHealth();
 
 
-        } while (isFinished);
+        }
+        if (winner == null) {
+            System.out.println(firstFighter.getCurrentHelth() > secondFighter.getCurrentHelth() ?
+                    firstFighter.getClass().getSimpleName() + " " + firstFighter.getName() + " winn" :
+                    secondFighter.getClass().getSimpleName() + " " + secondFighter.getName() + " winn");
+            winner = (firstFighter.getCurrentHelth() > 0) ? firstFighter : secondFighter;
+        } else System.out.println(winner.getClass().getSimpleName() + " " + secondFighter.getName() + " winn");
+
+        winner.restore();
+
+
     }
 
-    void postRoundPhase() {
+    void postTurnPhase() {
 
-        if (firstFighter.getAbility() instanceof OnPostRoundPhaseAction) {
-            firstFighter.getAbility().useAbility(firstFighter, secondFighter);
+        if (firstFighter.getAbilities() instanceof OnPostRoundPhaseAction) {
+            firstFighter.getAbilities().useAbility(firstFighter, secondFighter);
         }
         if (secondFighter instanceof OnPostRoundPhaseAction) {
-            secondFighter.getAbility().useAbility(secondFighter, firstFighter);
+            secondFighter.getAbilities().useAbility(secondFighter, firstFighter);
         }
+    }
+    void turnPhase(){
+        firstFighter.attack(secondFighter);
+
+        secondFighter.attack(firstFighter);
     }
 }

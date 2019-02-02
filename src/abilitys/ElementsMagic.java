@@ -1,11 +1,11 @@
 package abilitys;
 
 import fighters.Dragon;
-import fighters.base.Fighter;
+import fighters.base.Warrior;
 
-public class ElementsMagic implements FighterClassAbility {
+public class ElementsMagic implements FighterClassAbilitys {
 
-    public void useAbility(Fighter user, Fighter acceptor) {
+    public void useAbilitys(Warrior user, Warrior acceptor) {
         System.out.println("used elemental magic");
         Dragon dragon = (Dragon) user;
         float damage;

@@ -1,14 +1,16 @@
 package fighters;
 
 import abilitys.ElementsMagic;
-import abilitys.FighterClassAbility;
+import abilitys.FighterClassAbilitys;
 import abilitys.markers.OnPreRoundPhaseAction;
 import fighters.base.ElementalFighter;
 import fighters.base.Fighter;
+import fighters.base.Warrior;
 import utilites.Helper;
 
-public class Dragon implements ElementalFighter, Fighter, OnPreRoundPhaseAction {
-    FighterClassAbility ability;
+import java.util.ArrayList;
+
+public class Dragon extends Warrior implements ElementalFighter, Fighter, OnPreRoundPhaseAction {
     private String name;
     int elements;
     private float attak;
@@ -27,24 +29,20 @@ public class Dragon implements ElementalFighter, Fighter, OnPreRoundPhaseAction 
         setAbility(new ElementsMagic());
     }
 
-
-    @Override
-    public void attack(Fighter fighter) {
+    public void attack(Warrior fighter) {
         fighter.receiveDamage(this.getAttak()+atackModifier);
-        System.out.println(this.getName() + "[" + this.getCurrentHelth() + "] " + " deal to " +
-                fighter.getName() + "[" + fighter.getCurrentHelth() + "]" +
-                " " + getAttak() + " damage");
+        printBrifing(this,fighter);
 
     }
 
 
-    @Override
-    public FighterClassAbility getAbility() {
-        return ability;
+
+    public ArrayList<FighterClassAbilitys> getAbilities() {
+        return super.getAbilities();
     }
 
     public void setAbility(ElementsMagic ability) {
-        this.ability = ability;
+        super.getAbilities().add(ability);
     }
 
     @Override
@@ -54,7 +52,7 @@ public class Dragon implements ElementalFighter, Fighter, OnPreRoundPhaseAction 
     }
 
     @Override
-    public void restoreHealth() {
+    public void restore() {
         this.currentHelth = this.helth;
     }
 
@@ -122,8 +120,7 @@ public class Dragon implements ElementalFighter, Fighter, OnPreRoundPhaseAction 
         this.currentHelth = currentHelth;
     }
 
-    @Override
-    public void setAbility(FighterClassAbility ability) {
+    public void setAbilities(FighterClassAbilitys abilities) {
 
     }
 
