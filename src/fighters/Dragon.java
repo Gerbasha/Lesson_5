@@ -26,6 +26,7 @@ public class Dragon extends Warrior implements ElementalFighter, Fighter, OnPreR
         setCurrentHelth(helth);
         setAttak();
         setDeffence();
+
         setAbility(new ElementsMagic());
     }
 
@@ -42,6 +43,7 @@ public class Dragon extends Warrior implements ElementalFighter, Fighter, OnPreR
     }
 
     public void setAbility(ElementsMagic ability) {
+        super.setAbilities(new ArrayList<>());
         super.getAbilities().add(ability);
     }
 

@@ -66,7 +66,7 @@ public class Helper {
     }
 
 
-    public static void tossUpFigters(Fighter[] horde) {
+    public static void tossUpFigters(Warrior[] horde) {
         for (int i = 0; i < horde.length; i++) {
             horde[i] = Barracs.getNewFighter();
         }

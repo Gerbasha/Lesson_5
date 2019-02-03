@@ -23,7 +23,7 @@ public class Cheeter extends Warrior implements Fighter {
         this.attak = 30;
         this.deffence = 0.5f;
 
-        this.getAbilities() = new ArrayList<>();
+        this.setAbilities(new ArrayList<>());
         this.getAbilities().add(new ReduceAbilitys());
     }
 

@@ -1,4 +1,4 @@
 package abilitys.markers;
 
-public interface OnPostRoundPhaseAction {
+public interface OnPostRoundPhaseAction extends ActionPhase {
 }

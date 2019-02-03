@@ -1,14 +1,15 @@
 package fighters.knights;
 
 
-import abilitys.FighterClassAbilitys;
 import abilitys.LifeDrain;
 import fighters.base.Fighter;
 
+import java.util.ArrayList;
+
 public class DarkKnight extends Knight {
-    FighterClassAbilitys ability;
 
     public DarkKnight() {
+        super.setAbilities(new ArrayList<>());
         super.getAbilities().add(new LifeDrain());
     }
 

@@ -1,6 +1,5 @@
 package battle;
 
-import fighters.base.Fighter;
 import fighters.base.Warrior;
 import unitLabs.DragonLair;
 import utilites.Helper;
@@ -22,7 +21,7 @@ public class Battlefield {
         isRoundFinished = false;
         int stageCount = getStageCount(horde.length);
         tableOfRounds = new Warrior[stageCount + 1][];
-        Fighter[] nextTournamentStage = new Warrior[horde.length / 2];
+        Warrior[] nextTournamentStage = new Warrior[horde.length / 2];
         int winners = 0;
         int round = 1;
         prepairRound(tableOfRounds, horde, round);

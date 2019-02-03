@@ -4,6 +4,7 @@ import fighters.Cheeter;
 import fighters.DragonRider;
 import fighters.Elemental;
 import fighters.base.Fighter;
+import fighters.base.Warrior;
 import utilites.Helper;
 
 import java.util.Random;
@@ -15,7 +16,7 @@ public class Barracs {
     static String[] fightgerClases = {"elemental","vampire","ancient","cheeter", "darkknight", "dragon", "dragonrider", "holyknight", "knight"};
     static boolean isCheaterCreated;
 
-    public static Fighter getNewFighter() {
+    public static Warrior getNewFighter() {
 
         Random selectFighterClass = Helper.getRandomHelper();
         boolean finish = false;
@@ -55,8 +56,8 @@ public class Barracs {
         return result;
     }
 
-    private static Fighter creatrNewFighter(String fightgerClase) {
-        Fighter instance = null;
+    private static Warrior creatrNewFighter(String fightgerClase) {
+        Warrior instance = null;
 
 
         switch (fightgerClase) {

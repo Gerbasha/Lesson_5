@@ -1,4 +1,4 @@
 package abilitys.markers;
 
-public interface OnPreRoundPhaseAction {
+public interface OnPreRoundPhaseAction extends ActionPhase {
 }

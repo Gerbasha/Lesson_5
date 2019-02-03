@@ -1,15 +1,15 @@
 package unitLabs;
 
-import fighters.base.Fighter;
+import fighters.base.Warrior;
 import fighters.unded.AncientVampire;
 import fighters.unded.Vampire;
 
 public class GraveYard {
-    private Fighter resurected;
-    private static Fighter rised;
+    private Warrior resurected;
+    private static Warrior rised;
 
 
-    static Fighter createNewUnded(String unded) {
+    static Warrior createNewUnded(String unded) {
         switch (unded) {
             case "vampire": {
                 rised = new Vampire();

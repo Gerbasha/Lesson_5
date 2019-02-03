@@ -65,7 +65,8 @@ public class Vampire extends Warrior implements Fighter {
     }
 
     public void setAbilities(FighterClassAbilitys abilities) {
-        this.ability = abilities;
+        super.setAbilities(new ArrayList<>());
+        super.getAbilities().add(abilities);
     }
 
     public void receiveDamage(float damage) {

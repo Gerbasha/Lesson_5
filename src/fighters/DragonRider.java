@@ -3,6 +3,8 @@ package fighters;
 
 import abilitys.FighterClassAbilitys;
 import abilitys.RideTheDragon;
+import abilitys.markers.OnPostRoundPhaseAction;
+import abilitys.markers.OnPreRoundPhaseAction;
 import fighters.base.Fighter;
 import fighters.base.Warrior;
 import utilites.Helper;
@@ -25,7 +27,7 @@ public class DragonRider extends Warrior implements Fighter {
         this.attak = 15;
         this.deffence = 0.2f;
 
-        this.ability = new RideTheDragon();
+        this.setAbilities(new RideTheDragon());
     }
 
     public String getName() {
@@ -57,7 +59,6 @@ public class DragonRider extends Warrior implements Fighter {
         if (fighter instanceof Dragon)
             this.ability.useAbilitys(this, (Dragon) fighter);
         if (pet != null && pet.getCurrentHelth() > 0) {
-            pet.getAbilities().useAbilitys(pet, fighter);
             pet.attack(fighter);
         }
 
@@ -97,6 +98,20 @@ public class DragonRider extends Warrior implements Fighter {
     }
 
     public void setAbilities(FighterClassAbilitys abilities) {
-        this.ability = abilities;
+       super.setAbilities(new ArrayList<>());
+       super.getAbilities().add(abilities);
+    }
+
+    public void useDragon(String phase,Warrior warrior){
+        if (pet.getCurrentHelth() > 0){
+            ArrayList<FighterClassAbilitys> abilitysToUse = pet.getAbilities();
+            for (FighterClassAbilitys ability : abilitysToUse)
+
+                if (phase =="pre" & (ability instanceof OnPreRoundPhaseAction))
+                    ability.useAbilitys(pet, warrior);
+            if (phase =="post" & (ability instanceof OnPostRoundPhaseAction))
+                ability.useAbilitys(pet, warrior);
+
+        }
     }
 }

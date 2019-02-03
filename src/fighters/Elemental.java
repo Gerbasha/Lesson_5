@@ -6,12 +6,15 @@ import abilitys.FighterClassAbilitys;
 import fighters.base.ActionPostFight;
 import fighters.base.ElementalFighter;
 import fighters.base.Fighter;
+import fighters.base.Warrior;
 import utilites.Elements;
 import utilites.Helper;
 
+import java.util.ArrayList;
+
 import static unitLabs.Barracs.createElementTalant;
 
-public class Elemental implements Fighter,ElementalFighter, ActionPostFight {
+public class Elemental extends Warrior implements Fighter,ElementalFighter, ActionPostFight {
     int element;
     FighterClassAbilitys ability;
     private String name;
@@ -56,22 +59,22 @@ public class Elemental implements Fighter,ElementalFighter, ActionPostFight {
 
     }
 
-    private void setName(String name) {
+    public void setName(String name) {
         if (name != "generate")
             this.name = name;
         else this.name = Helper.generateName();
     }
 
 
-    private void setAttak() {
+     public void setAttak() {
         this.attak = Math.round(Math.abs(Helper.getRandomHelper().nextGaussian() * 10) + 10);
     }
 
-    private void setHelth() {
+     public void setHelth() {
         this.helth = Math.round(Math.abs(Helper.getRandomHelper().nextGaussian() * 50) + 100);
 
     }
-    private void setDeffence() {
+    public void setDeffence() {
         this.deffence = (float) (Math.abs(Helper.getRandomHelper().nextGaussian())) % 1;
     }
 
@@ -81,7 +84,8 @@ public class Elemental implements Fighter,ElementalFighter, ActionPostFight {
     }
 
     public void setAbilities(FighterClassAbilitys abilities) {
-        this.ability = abilities;
+        super.setAbilities(new ArrayList<>());
+        super.getAbilities().add(abilities);
     }
 
     @Override
@@ -130,8 +134,8 @@ public class Elemental implements Fighter,ElementalFighter, ActionPostFight {
     }
 
 
-    public FighterClassAbilitys getAbilities() {
-        return ability;
+    public ArrayList<FighterClassAbilitys> getAbilities() {
+        return super.getAbilities();
     }
 
     public void setCurrentHelth(float currentHelth) {
