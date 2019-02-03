@@ -5,6 +5,7 @@ import abilitys.markers.FighterClassAbilitys;
 import abilitys.markers.GodsHand;
 import abilitys.markers.OnPostRoundPhaseAction;
 import abilitys.markers.OnPreRoundPhaseAction;
+import fighters.Dragon;
 import fighters.DragonRider;
 import fighters.base.Fighter;
 import fighters.base.Warrior;
@@ -12,6 +13,7 @@ import fighters.base.Warrior;
 import java.util.ArrayList;
 
 public class Round {
+    private boolean isFinished;
     private Warrior firstFighter;
     private Warrior secondFighter;
     private Warrior winner;
@@ -48,34 +50,51 @@ public class Round {
     }
 
     void preTurnPhase() {
+        if (isFinished) {
+            ArrayList<FighterClassAbilitys> abilitysToUse = firstFighter.getAbilities();
+            for (FighterClassAbilitys ability : abilitysToUse)
+                if (ability instanceof OnPreRoundPhaseAction)
+                    ability.useAbilitys(firstFighter, secondFighter);
+            if (firstFighter instanceof DragonRider) {
+                Dragon pet = ((DragonRider) firstFighter).getPet();
 
-        ArrayList<FighterClassAbilitys> abilitysToUse = firstFighter.getAbilities();
-        for (FighterClassAbilitys ability : abilitysToUse)
-            if (ability instanceof OnPreRoundPhaseAction)
-                ability.useAbilitys(firstFighter, secondFighter);
-        if (firstFighter instanceof DragonRider)
-            if (((DragonRider) firstFighter).getPet() != null) {
-                DragonRider petMaster = ((DragonRider) firstFighter);
-                petMaster.useDragon("pre", secondFighter);
+                if (pet != null & !secondFighter.equals(pet)) {
+                    DragonRider petMaster = ((DragonRider) firstFighter);
+                    petMaster.useDragon("pre", secondFighter);
 
+                } else {
+                    if (secondFighter.equals(pet)) {
+                        isFinished = false;
+                        winner = firstFighter;
+                    }
+                }
             }
 
-        abilitysToUse = secondFighter.getAbilities();
+            abilitysToUse = secondFighter.getAbilities();
 
-        for (FighterClassAbilitys ability : abilitysToUse)
-            if (ability instanceof OnPreRoundPhaseAction)
-                ability.useAbilitys(secondFighter, firstFighter);
-        if (secondFighter instanceof DragonRider)
-            if (((DragonRider) secondFighter).getPet() != null) {
-                DragonRider petMaster = ((DragonRider) secondFighter);
-                petMaster.useDragon("pre", firstFighter);
+            for (FighterClassAbilitys ability : abilitysToUse)
+                if (ability instanceof OnPreRoundPhaseAction)
+                    ability.useAbilitys(secondFighter, firstFighter);
+            if (secondFighter instanceof DragonRider) {
+                Dragon pet = ((DragonRider) secondFighter).getPet();
 
+                if (pet != null & !secondFighter.equals(pet)) {
+                    DragonRider petMaster = ((DragonRider) secondFighter);
+                    petMaster.useDragon("pre", firstFighter);
+
+                } else {
+                    if (firstFighter.equals(pet)) {
+                        isFinished = false;
+                        winner = secondFighter;
+                    }
+                }
             }
 
+        }
     }
 
     void startRound() {
-        boolean isFinished = true;
+        isFinished = true;
         int rounds = 1;
         if (winner != null) isFinished = false;
 
@@ -108,36 +127,37 @@ public class Round {
     }
 
     void postTurnPhase() {
+        if (isFinished) {
+            ArrayList<FighterClassAbilitys> abilitysToUse = firstFighter.getAbilities();
+            for (FighterClassAbilitys ability : abilitysToUse)
+                if (ability instanceof OnPostRoundPhaseAction)
+                    ability.useAbilitys(firstFighter, secondFighter);
+            if (firstFighter instanceof DragonRider)
+                if (((DragonRider) firstFighter).getPet() != null) {
+                    DragonRider petMaster = ((DragonRider) firstFighter);
+                    petMaster.useDragon("post", secondFighter);
 
-        ArrayList<FighterClassAbilitys> abilitysToUse = firstFighter.getAbilities();
-        for (FighterClassAbilitys ability : abilitysToUse)
-            if (ability instanceof OnPostRoundPhaseAction)
-                ability.useAbilitys(firstFighter, secondFighter);
-        if (firstFighter instanceof DragonRider)
-            if (((DragonRider) firstFighter).getPet() != null) {
-                DragonRider petMaster = ((DragonRider) firstFighter);
-                petMaster.useDragon("post", secondFighter);
+                }
 
-            }
+            abilitysToUse = secondFighter.getAbilities();
 
-        abilitysToUse = secondFighter.getAbilities();
+            for (FighterClassAbilitys ability : abilitysToUse)
+                if (ability instanceof OnPostRoundPhaseAction)
+                    ability.useAbilitys(secondFighter, firstFighter);
+            if (secondFighter instanceof DragonRider)
+                if (((DragonRider) secondFighter).getPet() != null) {
+                    DragonRider petMaster = ((DragonRider) secondFighter);
+                    petMaster.useDragon("post", firstFighter);
 
-        for (FighterClassAbilitys ability : abilitysToUse)
-            if (ability instanceof OnPostRoundPhaseAction)
-                ability.useAbilitys(secondFighter, firstFighter);
-        if (secondFighter instanceof DragonRider)
-            if (((DragonRider) secondFighter).getPet() != null) {
-                DragonRider petMaster = ((DragonRider) secondFighter);
-                petMaster.useDragon("post", firstFighter);
-
-            }
-
+                }
+        }
     }
 
     void turnPhase() {
-        firstFighter.attack(secondFighter);
-
-        secondFighter.attack(firstFighter);
+        if (isFinished) {
+            firstFighter.attack(secondFighter);
+            secondFighter.attack(firstFighter);
+        }
     }
 
 }

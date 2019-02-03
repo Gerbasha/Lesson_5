@@ -14,6 +14,7 @@ public class Knight extends Warrior implements Fighter {
         setShild();
         getAbilities().add(new Shield());
     }
+
     public float getShild() {
         return shild;
     }
@@ -25,8 +26,8 @@ public class Knight extends Warrior implements Fighter {
     @Override
     public void receiveDamage(float damage) {
         if (!isShielded())
-            setCurrentHelth(getCurrentHelth()-(damage-damage * getDeffence()));
-        else System.out.println("Shield mirror the attak");
+            setCurrentHelth(getCurrentHelth() - (damage - damage * getDeffence()));
+        else System.out.println("Shield of " + getName() + " completely reduce the attack");
     }
 
     public void setShielded(boolean shielded) {

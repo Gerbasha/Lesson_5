@@ -13,7 +13,7 @@ public class RideTheDragon implements FighterClassAbilitys, OnPreRoundPhaseActio
         if (user instanceof DragonRider && acceptor instanceof Dragon) {
 
             DragonRider peted = (DragonRider) user;
-            System.out.println("Dragon is captured");
+            System.out.println("Dragon "+acceptor.getName()+" is captured by "+user.getName());
             peted.setPet((Dragon) acceptor);
         }
     }

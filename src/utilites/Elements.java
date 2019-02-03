@@ -18,4 +18,23 @@ public enum Elements {
     public int sign() {
         return element;
     }
+
+    public static String name(int sign) {
+        String result ="";
+        switch (sign){
+            case 1:
+                result= "Water";
+                break;
+            case 2:
+                result ="Fire";
+                break;
+            case 4:
+                result="Earth";
+                break;
+            case 8:
+                result="Air";
+                break;
+        }
+        return result;
+    }
 }

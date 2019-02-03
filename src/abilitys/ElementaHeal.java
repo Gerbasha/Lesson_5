@@ -13,7 +13,7 @@ public class ElementaHeal implements FighterClassAbilitys, OnPostRoundPhaseActio
                 float addHP = ((ElementalFighter) acceptor).receiveCurrentAttack() * user.getDeffence() * 2;
                 user.setCurrentHelth(((user.getCurrentHelth() + addHP)>=user.getHelth())
                         ?user.getHelth():(user.getCurrentHelth() + addHP));
-                System.out.println("Elemental heal retrive " + addHP + " HP");
+                System.out.println("Elemental heal retrieve to "+user.getName()+" " + addHP + " HP");
             }
         }
     }

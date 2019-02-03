@@ -11,7 +11,7 @@ import java.util.Random;
 import static utilites.Elements.*;
 
 public class Barracs {
-    static String[] fightgerClases = {"elemental", "vampire", "ancient", "cheeter", "darkknight", "dragon", "dragonrider", "holyknight", "knight"};
+    static String[] fightgerClases = {"dragon", "dragonrider", "elemental", "vampire", "ancient", "cheeter", "darkknight", "holyknight", "knight"};
     static boolean isCheaterCreated;
 
     public static Warrior getNewFighter() {

@@ -12,9 +12,8 @@ public class ReduceAbilitys implements FighterClassAbilitys, OnPreRoundPhaseActi
 
         if (acceptor.getAbilities()!=null & !(acceptor.getAbilities()instanceof VoidAbilitys))
         {
-            System.out.println("abilities reducing");
             Cheeter cheeter = (Cheeter)user;
-            System.out.println("Enemy abilitys are down");
+            System.out.println("Enemy abilities are down by "+user.getName());
             acceptor.setAbilities(cheeter.getVoidAbilitys(acceptor));
         }
     }

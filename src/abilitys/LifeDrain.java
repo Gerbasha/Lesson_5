@@ -10,7 +10,7 @@ public class LifeDrain implements FighterClassAbilitys, OnPostRoundPhaseAction {
     public void useAbilitys(Warrior user, Warrior acceptor) {
         if (user.getCurrentHelth() < user.getHelth()) {
             if (((user.getCurrentHelth() + (user.getAttak() - user.getAttak() * acceptor.getDeffence()) / 2) > user.getHelth())) {
-                System.out.print("Used lifedrain ");
+                System.out.print(user.getName()+ " use lifedrain ");
                 user.setCurrentHelth(user.getHelth());
                 System.out.println("to "+user.getCurrentHelth()+" HP");
             } else {

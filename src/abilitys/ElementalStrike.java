@@ -9,7 +9,7 @@ public class ElementalStrike implements FighterClassAbilitys, OnPreRoundPhaseAct
     @Override
     public void useAbilitys(Warrior user, Warrior acceptor) {
         ((ElementalFighter)user).changeAtackModyfier(0);
-        System.out.println("Used element strike");
+        System.out.println(user.getName()+ " use element strike");
         ElementalFighter eFighter = null;
         int multiplyer = 0;
         int element = 0b1000;
