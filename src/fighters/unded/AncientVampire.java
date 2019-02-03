@@ -11,17 +11,20 @@ public class AncientVampire extends Vampire implements ElementalFighter {
     }
 
     @Override
-    public int getElements() {
+    public int receiveElements() {
         return element;
     }
 
     @Override
-    public void increaseMultyplayAtack(float mult) {
-        this.atackModifier = mult;
+    public void changeAtackModyfier(float mult) {
+        this.atackModifier+= mult;
     }
+
+
 
     public void setElement(int element) {
         this.element = element;
     }
+
 
 }

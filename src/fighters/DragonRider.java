@@ -22,7 +22,7 @@ public class DragonRider extends Warrior implements Fighter {
         if (pet != null && pet.getHelth() > 0) {
             System.out.println("Riders Dragon receive damage");
             pet.setCurrentHelth(pet.getCurrentHelth() - damage * pet.getDeffence());
-        } else setCurrentHelth(getCurrentHelth() - damage * getDeffence());
+        } else setCurrentHelth(getCurrentHelth() - (damage-damage * getDeffence()));
     }
 
     public void attack(Warrior fighter) {
@@ -31,7 +31,7 @@ public class DragonRider extends Warrior implements Fighter {
             pet.attack(fighter);
             printBrifing(pet, fighter);
         }
-        printBrifing(this, fighter);
+
     }
 
     public Dragon getPet() {
@@ -39,7 +39,7 @@ public class DragonRider extends Warrior implements Fighter {
     }
 
     public void setPet(Dragon pet) {
-        if (pet == null)
+        if (this.pet == null)
             this.pet = pet;
     }
 

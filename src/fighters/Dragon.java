@@ -11,6 +11,7 @@ public class Dragon extends Warrior implements ElementalFighter, Fighter, OnPreR
 
     int elements;
     float atackModifier;
+    private float currentAttack;
 
 
     public Dragon() {
@@ -18,17 +19,24 @@ public class Dragon extends Warrior implements ElementalFighter, Fighter, OnPreR
     }
 
     public void attack(Warrior fighter) {
-        fighter.receiveDamage(getAttak() + atackModifier);
+        currentAttack=getAttak()+atackModifier;
+        fighter.receiveDamage(currentAttack);
+        currentAttack=getAttak();
         printBrifing(this, fighter);
     }
 
-    public int getElements() {
+    public int receiveElements() {
         return elements;
     }
 
     @Override
-    public void increaseMultyplayAtack(float mult) {
+    public void changeAtackModyfier(float mult) {
         atackModifier = mult;
+    }
+
+    @Override
+    public float receiveCurrentAttack() {
+        return currentAttack;
     }
 
     public void setElements(int elements) {
@@ -38,5 +46,6 @@ public class Dragon extends Warrior implements ElementalFighter, Fighter, OnPreR
     public void setAbilities(FighterClassAbilitys abilities) {
 
     }
+
 }
 

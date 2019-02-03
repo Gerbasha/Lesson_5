@@ -26,7 +26,7 @@ public class DragonLair {
         resurected.setName(d1.getName());
         resurected.setAttak(d1.getAttak());
         resurected.setDeffence(d1.getDeffence());
-        resurected.setElements(d1.getElements());
+        resurected.setElements(d1.receiveElements());
 
         return resurected;
     }

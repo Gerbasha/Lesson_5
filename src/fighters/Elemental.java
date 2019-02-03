@@ -1,6 +1,7 @@
 package fighters;
 
 
+import abilitys.ElementaHeal;
 import abilitys.ElementalStrike;
 import fighters.base.ElementalFighter;
 import fighters.base.Fighter;
@@ -9,13 +10,15 @@ import utilites.Elements;
 
 import static unitLabs.Barracs.createElementTalant;
 
-public class Elemental extends Warrior implements Fighter,ElementalFighter{
+public class Elemental extends Warrior implements Fighter, ElementalFighter {
     int element;
     float atackModifier;
+    private float currentAttack;
 
     public Elemental() {
         element = createElementTalant();
         getAbilities().add(new ElementalStrike());
+        getAbilities().add(new ElementaHeal());
     }
 
     public Elemental(Elements elements) {
@@ -23,32 +26,35 @@ public class Elemental extends Warrior implements Fighter,ElementalFighter{
     }
 
     @Override
-    public int getElements() {
+    public int receiveElements() {
         return element;
     }
 
     @Override
-    public void increaseMultyplayAtack(float mult) {
-
+    public void changeAtackModyfier(float mult) {
+        atackModifier = mult;
     }
+
+    @Override
+    public float receiveCurrentAttack() {
+        return currentAttack;
+    }
+
 
     public void setElement(int element) {
         this.element = element;
     }
 
-    public void attack(Fighter fighter) {
-        fighter.receiveDamage(getAttak()+atackModifier);
-    }
 
-    public int getElement() {
-        return element;
+    public void attack(Warrior fighter) {
+        currentAttack = getAttak() + atackModifier;
+        fighter.receiveDamage(currentAttack);
+        currentAttack = getAttak();
+        printBrifing(this, fighter);
     }
 
     public float getAtackModifier() {
         return atackModifier;
     }
 
-    public void setAtackModifier(float atackModifier) {
-        this.atackModifier = atackModifier;
-    }
 }

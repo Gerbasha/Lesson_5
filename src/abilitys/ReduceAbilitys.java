@@ -9,7 +9,7 @@ public class ReduceAbilitys implements FighterClassAbilitys, OnPreRoundPhaseActi
     @Override
     public void useAbilitys(Warrior user, Warrior acceptor) {
 
-        if (acceptor.getAbilities()!=null & !(acceptor.getAbilities().contains(new VoidAbilitys()) ))
+        if (acceptor.getAbilities()!=null & !(acceptor.getAbilities()instanceof VoidAbilitys))
         {
             System.out.println("abilities reducing");
             Cheeter cheeter = (Cheeter)user;

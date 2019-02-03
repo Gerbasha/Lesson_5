@@ -6,6 +6,8 @@ public interface ElementalFighter {
      *
      * @return return element mask
      */
-    int getElements();
-    void increaseMultyplayAtack(float mult);
+    int receiveElements();
+    void changeAtackModyfier(float mult);
+
+    float receiveCurrentAttack();
 }

@@ -24,9 +24,8 @@ public class Knight extends Warrior implements Fighter {
 
     @Override
     public void receiveDamage(float damage) {
-        Shield shield = new Shield();
-        if (!shielded)
-            setCurrentHelth(getCurrentHelth()-damage * getDeffence());
+        if (!isShielded())
+            setCurrentHelth(getCurrentHelth()-(damage-damage * getDeffence()));
         else System.out.println("Shield mirror the attak");
     }
 

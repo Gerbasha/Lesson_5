@@ -34,12 +34,12 @@ public abstract class Warrior implements Fighter {
 
     @Override
     public void receiveDamage(float damage) {
-        currentHelth -= damage * deffence;
+        currentHelth -= (damage-damage * deffence);
     }
 
     public void attack(Warrior fighter) {
 
-        fighter.receiveDamage(this.getAttak());
+        fighter.receiveDamage(getAttak());
         printBrifing(this, fighter);
 
     }

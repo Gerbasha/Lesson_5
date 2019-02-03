@@ -9,15 +9,22 @@ public class VampiricPover implements FighterClassAbilitys, OnPostRoundPhaseActi
     public void useAbilitys(Warrior user, Warrior acceptor) {
 
         if (user instanceof Vampire) {
-            if (((user.getCurrentHelth() + user.getAttak() * acceptor.getDeffence()) > user.getHelth())) {
-                System.out.println("Used vampirism. Atack incresed by " + user.getAttak() * acceptor.getDeffence() / 2);
-                ((Vampire) user).setAtackModifier(user.getAttak() * acceptor.getDeffence() / 2);
+            float atackParam =
+                    ((Vampire) user).receiveCurrentAttack() + user.getAttak() - user.getAttak() * acceptor.getDeffence();
+            if (((user.getCurrentHelth() +
+                    atackParam) > user.getHelth())) {
+                System.out.println("Used vampirism. Add " +
+                        atackParam + " HP. "
+                        + "Attack increased by " + atackParam / 2);
+
                 user.setCurrentHelth(user.getHelth());
             } else {
-                System.out.println("Used vampirism. Atack incresed by " + user.getAttak() * acceptor.getDeffence() / 2);
-                ((Vampire) user).setAtackModifier(user.getAttak() * acceptor.getDeffence() / 2);
-                user.setCurrentHelth((user.getCurrentHelth() + user.getAttak() * acceptor.getDeffence()));
+                System.out.println("Used vampirism. Add " +
+                        atackParam + " HP. Attack increased by " + atackParam / 2);
+
+                user.setCurrentHelth(user.getCurrentHelth() + atackParam);
             }
+            ((Vampire) user).setAtackModifier(atackParam / 2);
         }
 
     }
