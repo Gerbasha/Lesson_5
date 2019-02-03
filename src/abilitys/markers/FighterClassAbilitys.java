@@ -1,4 +1,4 @@
-package abilitys;
+package abilitys.markers;
 
 import fighters.base.Warrior;
 

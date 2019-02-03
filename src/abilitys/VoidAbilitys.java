@@ -1,6 +1,7 @@
 package abilitys;
 
 
+import abilitys.markers.FighterClassAbilitys;
 import fighters.base.Warrior;
 
 import java.util.ArrayList;

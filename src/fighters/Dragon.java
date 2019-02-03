@@ -1,7 +1,7 @@
 package fighters;
 
 import abilitys.ElementsMagic;
-import abilitys.FighterClassAbilitys;
+import abilitys.markers.FighterClassAbilitys;
 import abilitys.markers.OnPreRoundPhaseAction;
 import fighters.base.ElementalFighter;
 import fighters.base.Fighter;

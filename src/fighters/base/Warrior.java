@@ -1,7 +1,7 @@
 package fighters.base;
 
 
-import abilitys.FighterClassAbilitys;
+import abilitys.markers.FighterClassAbilitys;
 import abilitys.VoidAbilitys;
 import utilites.Helper;
 

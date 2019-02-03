@@ -1,6 +1,6 @@
 package fighters;
 
-import abilitys.FighterClassAbilitys;
+import abilitys.markers.FighterClassAbilitys;
 import abilitys.ReduceAbilitys;
 import abilitys.VoidAbilitys;
 import fighters.base.Fighter;

@@ -1,7 +1,7 @@
 package fighters;
 
 
-import abilitys.FighterClassAbilitys;
+import abilitys.markers.FighterClassAbilitys;
 import abilitys.RideTheDragon;
 import abilitys.markers.OnPostRoundPhaseAction;
 import abilitys.markers.OnPreRoundPhaseAction;

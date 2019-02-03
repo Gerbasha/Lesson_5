@@ -1,5 +1,6 @@
 package abilitys;
 
+import abilitys.markers.FighterClassAbilitys;
 import abilitys.markers.OnPreRoundPhaseAction;
 import fighters.Dragon;
 import fighters.base.ElementalFighter;

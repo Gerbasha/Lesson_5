@@ -1,6 +1,7 @@
 package abilitys;
 
 
+import abilitys.markers.FighterClassAbilitys;
 import abilitys.markers.OnPreRoundPhaseAction;
 import fighters.Cheeter;
 import fighters.base.Warrior;

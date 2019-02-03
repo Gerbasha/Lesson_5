@@ -1,5 +1,6 @@
 package abilitys;
 
+import abilitys.markers.FighterClassAbilitys;
 import abilitys.markers.OnPostRoundPhaseAction;
 import fighters.base.ElementalFighter;
 import fighters.base.Warrior;

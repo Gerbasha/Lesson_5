@@ -1,6 +1,6 @@
 package fighters;
 
-import abilitys.GodsHand;
+import abilitys.markers.GodsHand;
 import fighters.base.Fighter;
 
 public class Bishop implements GodsHand {

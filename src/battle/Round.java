@@ -1,8 +1,8 @@
 package battle;
 
 
-import abilitys.FighterClassAbilitys;
-import abilitys.GodsHand;
+import abilitys.markers.FighterClassAbilitys;
+import abilitys.markers.GodsHand;
 import abilitys.markers.OnPostRoundPhaseAction;
 import abilitys.markers.OnPreRoundPhaseAction;
 import fighters.DragonRider;
