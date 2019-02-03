@@ -1,13 +1,11 @@
 package unitLabs;
 
 
-import abilitys.Shield;
 import fighters.base.Warrior;
 import fighters.knights.DarkKnight;
 import fighters.knights.HolyKhight;
 import fighters.knights.Knight;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Academy {
@@ -40,34 +38,17 @@ public class Academy {
         switch (warrior) {
             case "knight": {
                 learned = new Knight();
-                setWarriorParameters();
-
                 break;
             }
             case "darkknight": {
                 learned = new DarkKnight();
-                setWarriorParameters();
-
                 break;
             }
             case "holyknight": {
                 learned = new HolyKhight();
-                setWarriorParameters();
-
                 break;
             }
         }
         return learned;
-    }
-
-    static void setWarriorParameters(){
-        learned.setName("generate");
-        learned.setHelth();
-        learned.setCurrentHelth(learned.helth);
-        learned.setAttak();
-        learned.setDeffence();
-        learned.setShild();
-        learned.setAbilities(new ArrayList<>());
-        learned.getAbilities().add(new Shield());
     }
 }

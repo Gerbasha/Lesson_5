@@ -3,17 +3,15 @@ package unitLabs;
 import fighters.Cheeter;
 import fighters.DragonRider;
 import fighters.Elemental;
-import fighters.base.Fighter;
 import fighters.base.Warrior;
 import utilites.Helper;
 
 import java.util.Random;
 
 import static utilites.Elements.*;
-import static utilites.Elements.FIRE;
 
 public class Barracs {
-    static String[] fightgerClases = {"elemental","vampire","ancient","cheeter", "darkknight", "dragon", "dragonrider", "holyknight", "knight"};
+    static String[] fightgerClases = {"elemental", "vampire", "ancient", "cheeter", "darkknight", "dragon", "dragonrider", "holyknight", "knight"};
     static boolean isCheaterCreated;
 
     public static Warrior getNewFighter() {
@@ -22,11 +20,11 @@ public class Barracs {
         boolean finish = false;
         int selector;
         do {
-            selector = (int) Math.abs(selectFighterClass.nextGaussian() * 10) % 6;
-            if((fightgerClases[selector]=="cheeter")&& isCheaterCreated) finish=true;
-            else if (fightgerClases[selector]=="cheeter")isCheaterCreated=true;
-            else finish=false;
-        }while (finish);
+            selector = (int) Math.abs(selectFighterClass.nextGaussian() * 10) % 9;
+            if ((fightgerClases[selector] == "cheeter") && isCheaterCreated) finish = true;
+            else if (fightgerClases[selector] == "cheeter") isCheaterCreated = true;
+            else finish = false;
+        } while (finish);
 
         return creatrNewFighter(fightgerClases[selector]);
     }

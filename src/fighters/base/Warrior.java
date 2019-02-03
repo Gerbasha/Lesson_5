@@ -2,7 +2,6 @@ package fighters.base;
 
 
 import abilitys.FighterClassAbilitys;
-import abilitys.Shield;
 import abilitys.VoidAbilitys;
 import utilites.Helper;
 
@@ -12,15 +11,22 @@ public abstract class Warrior implements Fighter {
     private String name;
     private float attak;
     private float deffence;
-    public float helth;
+    private float helth;
     private float currentHelth;
     ArrayList<FighterClassAbilitys> abilities;
-    float shild;
+
+    public Warrior() {
+        setName("generate");
+        setHelth();
+        setCurrentHelth(helth);
+        setAttak();
+        setDeffence();
+        this.abilities = new ArrayList<>();
+    }
 
     public String getName() {
         return name;
     }
-
 
     public float getCurrentHelth() {
         return currentHelth;
@@ -28,27 +34,20 @@ public abstract class Warrior implements Fighter {
 
     @Override
     public void receiveDamage(float damage) {
-        Shield shield = new Shield();
-        if (abilities.contains(shield)) if (Helper.getRandomHelper().nextGaussian() < shild)
-            currentHelth -= damage * deffence;
-        else System.out.println("Shield mirror the attak");
+        currentHelth -= damage * deffence;
     }
 
-    public void attack(Fighter fighter) {
+    public void attack(Warrior fighter) {
 
         fighter.receiveDamage(this.getAttak());
-        System.out.println(this.getName() + "[" + this.getCurrentHelth() + "] " + " deal to " +
-                ((Warrior) fighter).getName() + "[" + ((Warrior) fighter).getCurrentHelth() + "]" +
-                " " + getAttak() + " damage");
+        printBrifing(this, fighter);
 
     }
 
-    // @Override
     public float getAttak() {
         return attak;
     }
 
-    //  @Override
     public float getDeffence() {
         return deffence;
     }
@@ -83,14 +82,8 @@ public abstract class Warrior implements Fighter {
         this.deffence = deffence;
     }
 
-
     public ArrayList<FighterClassAbilitys> getAbilities() {
         return abilities;
-    }
-
-
-    public void setFighterClassAbility(FighterClassAbilitys fighterClassAbility) {
-        this.abilities.add(fighterClassAbility);
     }
 
     public void setHelth() {
@@ -111,20 +104,8 @@ public abstract class Warrior implements Fighter {
         this.helth = helth;
     }
 
-    //    public FighterClassAbilitys getAbilities() {
-//        return abilities;
-//    }
-//
     public void setAbilities(ArrayList<FighterClassAbilitys> abilities) {
         this.abilities = abilities;
-    }
-
-    public float getShild() {
-        return shild;
-    }
-
-    public void setShild() {
-        this.shild = (float) ((Math.abs(Helper.getRandomHelper().nextGaussian())) % 1) / 2;
     }
 
     boolean isAlive() {

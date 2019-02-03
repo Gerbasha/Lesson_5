@@ -4,6 +4,7 @@ package battle;
 import abilitys.FighterClassAbilitys;
 import abilitys.GodsHand;
 import abilitys.markers.OnPostRoundPhaseAction;
+import abilitys.markers.OnPreRoundPhaseAction;
 import fighters.DragonRider;
 import fighters.base.Fighter;
 import fighters.base.Warrior;
@@ -50,7 +51,7 @@ public class Round {
 
         ArrayList<FighterClassAbilitys> abilitysToUse = firstFighter.getAbilities();
         for (FighterClassAbilitys ability : abilitysToUse)
-            if (ability instanceof OnPostRoundPhaseAction)
+            if (ability instanceof OnPreRoundPhaseAction)
                 ability.useAbilitys(firstFighter, secondFighter);
         if (firstFighter instanceof DragonRider)
             if (((DragonRider) firstFighter).getPet() != null) {
@@ -62,7 +63,7 @@ public class Round {
         abilitysToUse = secondFighter.getAbilities();
 
         for (FighterClassAbilitys ability : abilitysToUse)
-            if (ability instanceof OnPostRoundPhaseAction)
+            if (ability instanceof OnPreRoundPhaseAction)
                 ability.useAbilitys(secondFighter, firstFighter);
         if (secondFighter instanceof DragonRider)
             if (((DragonRider) secondFighter).getPet() != null) {
