@@ -17,6 +17,7 @@ public class Battlefield {
    // Dragon punisher=new DragonLair().getBorned();
 
     public void startBattle() {
+
         isTournamentFinished = false;
         isRoundFinished = false;
         int stageCount = getStageCount(horde.length);
@@ -25,6 +26,8 @@ public class Battlefield {
         int winners = 0;
         int round = 1;
         prepairRound(tableOfRounds, horde, round);
+        // разписываем на два метода.
+        // меняем на  do while
         while (!isTournamentFinished) {
             System.out.println("round " + round + " started");
             for (int i = 0; i < tableOfRounds[round - 1].length; i += 2) {
