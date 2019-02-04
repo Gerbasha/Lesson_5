@@ -29,7 +29,15 @@ public class Vampire extends Warrior implements Fighter {
         this.atackModifier = atackModifier;
     }
 
+ //receive получить текущую атакау? такеи методы принят называть get
     public float receiveCurrentAttack() {
+
+        return currentAttack;
+    }
+
+    @Override
+    public float getAttak() {
+        // дублирующий метод
         return currentAttack;
     }
 
@@ -39,8 +47,5 @@ public class Vampire extends Warrior implements Fighter {
         atackModifier = 0;
     }
 
-    @Override
-    public float getAttak() {
-        return currentAttack;
-    }
+
 }

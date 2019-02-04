@@ -19,7 +19,7 @@ public class ReceiveElement implements FighterClassAbilitys, OnPreRoundPhaseActi
         System.out.println(Elements.name(((ElementalFighter) user).receiveElements()));
 
         int multiplyer = 0;
-        int element = 0b1000;
+        int element = 0b1000; // стихи выносим в значащие константы
         if (acceptor instanceof ElementalFighter) {
             int resistBonus = ((ElementalFighter) acceptor).receiveElements();
             for (int i = 0; i < 4; i++) {

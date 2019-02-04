@@ -49,13 +49,15 @@ public class Round {
         return winner;
     }
 
+//    instanceof DragonRider - должен перехать в интерфейс
+
     void preTurnPhase() {
         if (isFinished) {
             ArrayList<FighterClassAbilitys> abilitysToUse = firstFighter.getAbilities();
             for (FighterClassAbilitys ability : abilitysToUse)
-                if (ability instanceof OnPreRoundPhaseAction)
+                if (ability instanceof OnPreRoundPhaseAction ) // нет необходимости разделять FighterClassAbilitys с ActionPhase
                     ability.useAbilitys(firstFighter, secondFighter);
-            if (firstFighter instanceof DragonRider) {
+            if (firstFighter instanceof DragonRider) { // нужно обьеденить с  useAbilitys
                 Dragon pet = ((DragonRider) firstFighter).getPet();
 
                 if (pet != null & !secondFighter.equals(pet)) {
@@ -69,6 +71,7 @@ public class Round {
                     }
                 }
             }
+            // блоки с троки 58 - 71 дублируют 74-92
 
             abilitysToUse = secondFighter.getAbilities();
 
@@ -127,6 +130,9 @@ public class Round {
     }
 
     void postTurnPhase() {
+
+        // дубриующая логика  снова для первого и для второго бойца.
+
         if (isFinished) {
             ArrayList<FighterClassAbilitys> abilitysToUse = firstFighter.getAbilities();
             for (FighterClassAbilitys ability : abilitysToUse)
@@ -154,6 +160,7 @@ public class Round {
     }
 
     void turnPhase() {
+        // не считается фактически нанесенный урон.
         if (isFinished) {
             firstFighter.attack(secondFighter);
             secondFighter.attack(firstFighter);
