@@ -5,8 +5,6 @@ import abilitys.markers.FighterClassAbilitys;
 import abilitys.markers.GodsHand;
 import abilitys.markers.OnPostRoundPhaseAction;
 import abilitys.markers.OnPreRoundPhaseAction;
-import fighters.Dragon;
-import fighters.DragonRider;
 import fighters.base.Fighter;
 import fighters.base.Warrior;
 
@@ -28,21 +26,11 @@ public class Round {
 
     Fighter fight(GodsHand hand) {
 
-
         preTurnPhase();
         startRound();
         postTurnPhase();
 
         return winner;
-    }
-
-
-    public Warrior getFirstFighter() {
-        return firstFighter;
-    }
-
-    public Warrior getSecondFighter() {
-        return secondFighter;
     }
 
     Warrior getWinner() {
@@ -65,20 +53,6 @@ public class Round {
         for (FighterClassAbilitys ability : abilitysToUse)
             if (ability instanceof OnPreRoundPhaseAction) // нет необходимости разделять FighterClassAbilitys с ActionPhase
                 ability.useAbilitys(firstFighter, secondFighter);
-        if (firstFighter instanceof DragonRider) { // нужно обьеденить с  useAbilitys
-            Dragon pet = ((DragonRider) firstFighter).getPet();
-
-            if (pet != null & !secondFighter.equals(pet)) {
-                DragonRider petMaster = ((DragonRider) firstFighter);
-                petMaster.useDragon("pre", secondFighter);
-
-            } else {
-                if (secondFighter.equals(pet)) {
-                    isFinished = false;
-                    winner = firstFighter;
-                }
-            }
-        }
     }
 
     void startRound() {
@@ -126,11 +100,6 @@ public class Round {
         for (FighterClassAbilitys ability : abilitysToUse)
             if (ability instanceof OnPostRoundPhaseAction)
                 ability.useAbilitys(firstFighter, secondFighter);
-        if (firstFighter instanceof DragonRider)
-            if (((DragonRider) firstFighter).getPet() != null) {
-                DragonRider petMaster = ((DragonRider) firstFighter);
-                petMaster.useDragon("post", secondFighter);
-            }
     }
 
     void turnPhase() {

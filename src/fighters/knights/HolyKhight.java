@@ -1,7 +1,7 @@
 package fighters.knights;
 
 
-import abilitys.Heal;
+import abilitys.heal.Heal;
 
 public class HolyKhight extends Knight {
 

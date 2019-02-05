@@ -1,7 +1,7 @@
 package fighters;
 
 
-import abilitys.ElementaHeal;
+import abilitys.heal.ElementaHeal;
 import abilitys.ElementalStrike;
 import fighters.base.ElementalFighter;
 import fighters.base.Fighter;

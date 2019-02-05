@@ -1,20 +1,17 @@
 package fighters;
 
 
-import abilitys.markers.FighterClassAbilitys;
 import abilitys.RideTheDragon;
-import abilitys.markers.OnPostRoundPhaseAction;
-import abilitys.markers.OnPreRoundPhaseAction;
+import abilitys.UseRidedDragon;
 import fighters.base.Fighter;
 import fighters.base.Warrior;
-
-import java.util.ArrayList;
 
 public class DragonRider extends Warrior implements Fighter {
     Dragon pet;
 
     public DragonRider() {
         getAbilities().add(new RideTheDragon());
+        getAbilities().add(new UseRidedDragon());
     }
 
     @Override
@@ -47,16 +44,4 @@ public class DragonRider extends Warrior implements Fighter {
             this.pet = pet;
     }
 
-    public void useDragon(String phase, Warrior warrior) {
-        if (pet.getCurrentHelth() > 0) {
-            ArrayList<FighterClassAbilitys> abilitysToUse = pet.getAbilities();
-            for (FighterClassAbilitys ability : abilitysToUse) {
-
-                if (phase == "pre" & (ability instanceof OnPreRoundPhaseAction))
-                    ability.useAbilitys(pet, warrior);
-                if (phase == "post" & (ability instanceof OnPostRoundPhaseAction))
-                    ability.useAbilitys(pet, warrior);
-            }
-        }
-    }
 }

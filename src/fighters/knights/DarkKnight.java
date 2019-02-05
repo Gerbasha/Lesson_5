@@ -1,7 +1,7 @@
 package fighters.knights;
 
 
-import abilitys.LifeDrain;
+import abilitys.heal.LifeDrain;
 
 public class DarkKnight extends Knight {
 

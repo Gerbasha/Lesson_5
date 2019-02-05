@@ -1,4 +1,4 @@
-package abilitys;
+package abilitys.heal;
 
 
 import abilitys.markers.FighterClassAbilitys;
