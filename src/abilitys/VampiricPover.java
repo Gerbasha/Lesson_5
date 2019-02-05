@@ -10,22 +10,19 @@ public class VampiricPover implements FighterClassAbilitys, OnPostRoundPhaseActi
     public void useAbilitys(Warrior user, Warrior acceptor) {
 
         if (user instanceof Vampire) {
-            float atackParam =
-                    ((Vampire) user).receiveCurrentAttack() + user.getAttak() - user.getAttak() * acceptor.getDeffence();
-            if (((user.getCurrentHelth() +
-                    atackParam) > user.getHelth())) {
-                System.out.println(user.getName()+ " use vampirism. Add " +
-                        atackParam + " HP. "
-                        + "Attack increased by " + atackParam / 2);
+            float modif = acceptor.getThisTurnReceivedDamage();
+            if (((user.getCurrentHelth() + modif) > user.getHelth())) {
+                System.out.println(user.getName() + " use vampirism. Add " + modif + " HP. "
+                        + "Attack increased by " + modif / 2);
 
                 user.setCurrentHelth(user.getHelth());
             } else {
-                System.out.println(user.getName()+ " use vampirism. Add " +
-                        atackParam + " HP. Attack increased by " + atackParam / 2);
+                System.out.println(user.getName() + " use vampirism. Add " +
+                        modif + " HP. Attack increased by " + modif / 2);
 
-                user.setCurrentHelth(user.getCurrentHelth() + atackParam);
+                user.setCurrentHelth(user.getCurrentHelth() + modif);
             }
-            ((Vampire) user).setAtackModifier(atackParam / 2);
+            ((Vampire) user).setAtackModifier(modif / 2);
         }
 
     }

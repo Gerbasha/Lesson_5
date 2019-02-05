@@ -36,7 +36,7 @@ public class Elemental extends Warrior implements Fighter, ElementalFighter {
     }
 
     @Override
-    public float receiveCurrentAttack() {
+    public float getCurrentAttack() {
         return currentAttack;
     }
 

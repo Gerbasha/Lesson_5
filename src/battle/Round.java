@@ -55,7 +55,7 @@ public class Round {
         if (isFinished) {
             ArrayList<FighterClassAbilitys> abilitysToUse = firstFighter.getAbilities();
             for (FighterClassAbilitys ability : abilitysToUse)
-                if (ability instanceof OnPreRoundPhaseAction ) // нет необходимости разделять FighterClassAbilitys с ActionPhase
+                if (ability instanceof OnPreRoundPhaseAction) // нет необходимости разделять FighterClassAbilitys с ActionPhase
                     ability.useAbilitys(firstFighter, secondFighter);
             if (firstFighter instanceof DragonRider) { // нужно обьеденить с  useAbilitys
                 Dragon pet = ((DragonRider) firstFighter).getPet();
@@ -162,8 +162,10 @@ public class Round {
     void turnPhase() {
         // не считается фактически нанесенный урон.
         if (isFinished) {
+
             firstFighter.attack(secondFighter);
             secondFighter.attack(firstFighter);
+
         }
     }
 

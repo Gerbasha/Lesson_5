@@ -8,7 +8,6 @@ public interface Fighter {
 
     void receiveDamage(float damage);
 
-
     void restore();
 
 }

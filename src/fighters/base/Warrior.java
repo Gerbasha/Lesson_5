@@ -13,6 +13,7 @@ public abstract class Warrior implements Fighter {
     private float deffence;
     private float helth;
     private float currentHelth;
+    private float thisTurnReceivedDamage;
     ArrayList<FighterClassAbilitys> abilities;
 
     public Warrior() {
@@ -34,11 +35,12 @@ public abstract class Warrior implements Fighter {
 
     @Override
     public void receiveDamage(float damage) {
-        currentHelth -= (damage-damage * deffence);
+        thisTurnReceivedDamage = currentHelth;
+        currentHelth -= (damage - damage * deffence);
+        thisTurnReceivedDamage -= currentHelth;
     }
 
     public void attack(Warrior fighter) {
-
         fighter.receiveDamage(getAttak());
         printBrifing(this, fighter);
 
@@ -66,7 +68,7 @@ public abstract class Warrior implements Fighter {
         else this.name = Helper.generateName();
     }
 
-    public void setAttak() {
+    private void setAttak() {
         this.attak = Math.round(Math.abs(Helper.getRandomHelper().nextGaussian() * 5) + 5);
     }
 
@@ -74,7 +76,7 @@ public abstract class Warrior implements Fighter {
         this.attak = attak;
     }
 
-    public void setDeffence() {
+    private void setDeffence() {
         this.deffence = (float) (Math.abs(Helper.getRandomHelper().nextGaussian())) % 1;
     }
 
@@ -86,7 +88,7 @@ public abstract class Warrior implements Fighter {
         return abilities;
     }
 
-    public void setHelth() {
+    private void setHelth() {
         this.helth = Math.round(Math.abs(Helper.getRandomHelper().nextGaussian() * 50) + 30);
     }
 
@@ -100,10 +102,6 @@ public abstract class Warrior implements Fighter {
         return helth;
     }
 
-    public void setHelth(float helth) {
-        this.helth = helth;
-    }
-
     public void setAbilities(ArrayList<FighterClassAbilitys> abilities) {
         this.abilities = abilities;
     }
@@ -112,9 +110,17 @@ public abstract class Warrior implements Fighter {
         return currentHelth > 0;
     }
 
-    public static void printBrifing(Warrior fighter1, Warrior fighter2) {
+    protected static void printBrifing(Warrior fighter1, Warrior fighter2) {
         System.out.println(fighter1.getName() + "[" + fighter1.getCurrentHelth() + "] " + " deal to " +
                 fighter2.getName() + "[" + fighter2.getCurrentHelth() + "]" +
-                " " + fighter1.getAttak() + " damage");
+                " " + fighter1.getAttak() + " damage. Real taken damage is " + fighter2.getThisTurnReceivedDamage());
+    }
+
+    public float getThisTurnReceivedDamage() {
+        return thisTurnReceivedDamage;
+    }
+
+    public void setThisTurnReceivedDamage(float damg) {
+        thisTurnReceivedDamage = damg;
     }
 }

@@ -10,16 +10,18 @@ public class LifeDrain implements FighterClassAbilitys, OnPostRoundPhaseAction {
     // способность не учитываем то что урон может быть не нанесен, благодарю спосбоностям провтиника
     @Override
     public void useAbilitys(Warrior user, Warrior acceptor) {
-        if (user.getCurrentHelth() < user.getHelth()) {
-            if (((user.getCurrentHelth() + (user.getAttak() - user.getAttak() * acceptor.getDeffence()) / 2) > user.getHelth())) {
-                System.out.print(user.getName()+ " use lifedrain ");
-                user.setCurrentHelth(user.getHelth());
-                System.out.println("to "+user.getCurrentHelth()+" HP");
-            } else {
-                System.out.print("Used lifedrain " + (user.getAttak() - user.getAttak() * acceptor.getDeffence()) / 2);
-                user.setCurrentHelth(user.getCurrentHelth() + (user.getAttak() - user.getAttak() * acceptor.getDeffence()) / 2);
-                System.out.println("to "+user.getCurrentHelth()+" HP");
+        if (acceptor.getThisTurnReceivedDamage() > 0) {
+            if (user.getCurrentHelth() < user.getHelth()) {
+                if (((user.getCurrentHelth() + user.getThisTurnReceivedDamage() / 2) > user.getHelth())) {
+                    System.out.print(user.getName() + " use lifedrain ");
+                    user.setCurrentHelth(user.getHelth());
+                    System.out.println("to " + user.getCurrentHelth() + " HP");
+                } else {
+                    System.out.print("Used lifedrain " + user.getThisTurnReceivedDamage() / 2);
+                    user.setCurrentHelth(user.getCurrentHelth() + user.getThisTurnReceivedDamage() / 2);
+                    System.out.println("to " + user.getCurrentHelth() + " HP");
+                }
             }
-        }
+        }else System.out.println("Damage failed. Lifedrain unsuccesfull...");
     }
 }

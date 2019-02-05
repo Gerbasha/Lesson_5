@@ -25,9 +25,14 @@ public class Knight extends Warrior implements Fighter {
 
     @Override
     public void receiveDamage(float damage) {
-        if (!isShielded())
+        if (!isShielded()) {
+            setThisTurnReceivedDamage(getCurrentHelth());
             setCurrentHelth(getCurrentHelth() - (damage - damage * getDeffence()));
-        else System.out.println("Shield of " + getName() + " completely reduce the attack");
+            setThisTurnReceivedDamage(getThisTurnReceivedDamage()-getCurrentHelth());
+        } else {
+            System.out.println("Shield of " + getName() + " completely reduce the attack");
+            setShielded(false);
+        }
     }
 
     public void setShielded(boolean shielded) {

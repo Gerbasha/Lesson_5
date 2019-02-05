@@ -35,7 +35,7 @@ public class Dragon extends Warrior implements ElementalFighter, Fighter, OnPreR
     }
 
     @Override
-    public float receiveCurrentAttack() {
+    public float getCurrentAttack() {
         return currentAttack;
     }
 
