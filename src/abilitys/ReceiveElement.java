@@ -5,9 +5,9 @@ import abilitys.markers.OnPreRoundPhaseAction;
 import fighters.base.ElementalFighter;
 import fighters.base.Warrior;
 import fighters.unded.AncientVampire;
-import utilites.Elements;
 
 import static unitLabs.Barracs.createElementTalant;
+import static utilites.Elements.*;
 
 public class ReceiveElement implements FighterClassAbilitys, OnPreRoundPhaseAction {
     @Override
@@ -16,10 +16,10 @@ public class ReceiveElement implements FighterClassAbilitys, OnPreRoundPhaseActi
         System.out.print(user.getName()+" receive new element ");
         if (user instanceof AncientVampire)
             ((AncientVampire) user).setElement(createElementTalant());
-        System.out.println(Elements.name(((ElementalFighter) user).receiveElements()));
+        System.out.println(name(((ElementalFighter) user).receiveElements()));
 
         int multiplyer = 0;
-        int element = 0b1000; // стихи выносим в значащие константы
+        int element = AIR.sign();
         if (acceptor instanceof ElementalFighter) {
             int resistBonus = ((ElementalFighter) acceptor).receiveElements();
             for (int i = 0; i < 4; i++) {
@@ -29,7 +29,7 @@ public class ReceiveElement implements FighterClassAbilitys, OnPreRoundPhaseActi
             }
             ((AncientVampire) user).setAtackModifier(user.getAttak() * multiplyer);
         } else {
-            float newAtack = ((AncientVampire) user).getAttak();
+            float newAtack = user.getAttak();
             ((AncientVampire) user).setAtackModifier(newAtack * 2);
         }
     }

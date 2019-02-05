@@ -1,7 +1,6 @@
 package fighters;
 
 import abilitys.ElementsMagic;
-import abilitys.markers.FighterClassAbilitys;
 import abilitys.markers.OnPreRoundPhaseAction;
 import fighters.base.ElementalFighter;
 import fighters.base.Fighter;
@@ -13,15 +12,14 @@ public class Dragon extends Warrior implements ElementalFighter, Fighter, OnPreR
     float atackModifier;
     private float currentAttack;
 
-
     public Dragon() {
         getAbilities().add(new ElementsMagic());
     }
 
     public void attack(Warrior fighter) {
-        currentAttack=getAttak()+atackModifier;
+        currentAttack = getAttak() + atackModifier;
         fighter.receiveDamage(currentAttack);
-        currentAttack=getAttak();
+        currentAttack = getAttak();
         printBrifing(this, fighter);
     }
 
@@ -34,17 +32,8 @@ public class Dragon extends Warrior implements ElementalFighter, Fighter, OnPreR
         atackModifier = mult;
     }
 
-    @Override
-    public float getCurrentAttack() {
-        return currentAttack;
-    }
-
     public void setElements(int elements) {
         this.elements = elements;
-    }
-
-    public void setAbilities(FighterClassAbilitys abilities) {
-
     }
 
 }

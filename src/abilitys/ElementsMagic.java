@@ -21,7 +21,6 @@ public class ElementsMagic implements FighterClassAbilitys, OnPreRoundPhaseActio
                         (1 - (((resistBonus & element) == element) ? 1 : 0)) : 0;
                 element >>= 1;
             }
-
         } else {
             for (int i = 0; i < 4; i++) {
                 multiplyer += ((dragon.receiveElements() & element) == element) ? 1 : 0;

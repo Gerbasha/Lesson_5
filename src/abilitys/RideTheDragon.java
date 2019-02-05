@@ -11,7 +11,6 @@ public class RideTheDragon implements FighterClassAbilitys, OnPreRoundPhaseActio
     @Override
     public void useAbilitys(Warrior user, Warrior acceptor) {
         if (user instanceof DragonRider && acceptor instanceof Dragon) {
-
             DragonRider peted = (DragonRider) user;
             System.out.println("Dragon "+acceptor.getName()+" is captured by "+user.getName());
             peted.setPet((Dragon) acceptor);

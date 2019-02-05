@@ -20,19 +20,19 @@ public enum Elements {
     }
 
     public static String name(int sign) {
-        String result ="";
-        switch (sign){
+        String result = "";
+        switch (sign) {
             case 1:
-                result= "Water";
+                result = "Water";
                 break;
             case 2:
-                result ="Fire";
+                result = "Fire";
                 break;
             case 4:
-                result="Earth";
+                result = "Earth";
                 break;
             case 8:
-                result="Air";
+                result = "Air";
                 break;
         }
         return result;

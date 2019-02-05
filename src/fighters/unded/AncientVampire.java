@@ -20,8 +20,6 @@ public class AncientVampire extends Vampire implements ElementalFighter {
         this.atackModifier+= mult;
     }
 
-
-
     public void setElement(int element) {
         this.element = element;
     }

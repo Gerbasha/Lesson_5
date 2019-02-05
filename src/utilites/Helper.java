@@ -4,7 +4,6 @@ import battle.Round;
 import fighters.Cheeter;
 import fighters.Dragon;
 import fighters.DragonRider;
-import fighters.base.Fighter;
 import fighters.base.Warrior;
 import unitLabs.Barracs;
 
@@ -24,7 +23,6 @@ public class Helper {
     }
 
     public static Random getRandomHelper() {
-
         if (randomHelper != null) return randomHelper;
         else {
             randomHelper = new Random();
@@ -33,7 +31,6 @@ public class Helper {
     }
 
     public static String generateName() {
-
         return firstName[Math.abs(getRandomHelper().nextInt() % 8)] +
                 middleName[Math.abs(getRandomHelper().nextInt() % 8)] +
                 lastName[Math.abs(getRandomHelper().nextInt() % 8)];
@@ -76,25 +73,20 @@ public class Helper {
         System.out.println("This fighters are ready for tournament:");
         for (Warrior f : horde) {
             System.out.println(f.getClass().getSimpleName() + " " + f.getName() + "[" + f.getHelth() + "] " + " a:" + f.getAttak() + " d:" + f.getDeffence());
-
-
         }
     }
 
     public static void prepairRound(Warrior[][] tableOfRounds, Warrior[] horde, int round) {
         if (tableOfRounds != null) {
-
             tableOfRounds[round - 1] = new Warrior[horde.length];
             for (int i = 0; i < horde.length; i++) {
                 tableOfRounds[round - 1][i] = horde[i];
             }
         }
-
     }
 
     public static Round getNextFightersPair(Warrior[] horde, int i) {
         Round couple = new Round();
-
         Warrior first = horde[i];
         Warrior second = horde[i + 1];
         if (second instanceof Cheeter) {
@@ -105,11 +97,8 @@ public class Helper {
             couple.setSecondFighter(first);
         } else {
             couple.serFirstFighter(first);
-
             couple.setSecondFighter(second);
         }
-
-
         return couple;
     }
 }

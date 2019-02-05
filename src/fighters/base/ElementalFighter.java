@@ -11,5 +11,4 @@ public interface ElementalFighter {
 
     void changeAtackModyfier(float mult);
 
-    float getCurrentAttack();
 }

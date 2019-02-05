@@ -4,7 +4,7 @@ import fighters.base.Warrior;
 import fighters.unded.AncientVampire;
 import fighters.unded.Vampire;
 
-public class GraveYard {
+class GraveYard {
     private Warrior resurected;
     private static Warrior rised;
 
@@ -13,16 +13,12 @@ public class GraveYard {
         switch (unded) {
             case "vampire": {
                 rised = new Vampire();
-
                 break;
             }
             case "ancient": {
                 rised = new AncientVampire();
-
                 break;
-
             }
-
         }
         return rised;
     }

@@ -13,12 +13,12 @@ public class VoidAbilitys extends ArrayList<FighterClassAbilitys> implements Fig
         this.trueAbilitys = fighter.getAbilities();
     }
 
-    VoidAbilitys() {
-    }
-
     @Override
     public void useAbilitys(Warrior user, Warrior acceptor) {
 
     }
-    public ArrayList<FighterClassAbilitys> restoreTrueAbilitys(){return trueAbilitys;}
+
+    public ArrayList<FighterClassAbilitys> restoreTrueAbilitys() {
+        return trueAbilitys;
+    }
 }

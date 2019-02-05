@@ -14,7 +14,7 @@ public abstract class Warrior implements Fighter {
     private float helth;
     private float currentHelth;
     private float thisTurnReceivedDamage;
-    ArrayList<FighterClassAbilitys> abilities;
+    private ArrayList<FighterClassAbilitys> abilities;
 
     public Warrior() {
         setName("generate");
@@ -43,7 +43,6 @@ public abstract class Warrior implements Fighter {
     public void attack(Warrior fighter) {
         fighter.receiveDamage(getAttak());
         printBrifing(this, fighter);
-
     }
 
     public float getAttak() {
@@ -93,9 +92,7 @@ public abstract class Warrior implements Fighter {
     }
 
     public void setCurrentHelth(float helth) {
-        {
-            this.currentHelth = helth;
-        }
+        currentHelth = helth;
     }
 
     public float getHelth() {

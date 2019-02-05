@@ -13,10 +13,6 @@ public class Vampire extends Warrior implements Fighter {
         getAbilities().add(new VampiricPover());
     }
 
-    public float getAtackModifier() {
-        return atackModifier;
-    }
-
     @Override
     public void attack(Warrior fighter) {
         setCurrentAttack(atackModifier);
@@ -29,7 +25,6 @@ public class Vampire extends Warrior implements Fighter {
         this.atackModifier = atackModifier;
     }
 
-    //receive получить текущую атакау? такеи методы принят называть get
     public float getCurrentAttack() {
 
         return currentAttack;

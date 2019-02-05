@@ -2,18 +2,16 @@ package battle;
 
 import fighters.base.Warrior;
 import unitLabs.DragonLair;
-import utilites.Helper;
 
 import static utilites.Helper.*;
 
 public class Battlefield {
-    Warrior[] horde;
-    Warrior[][] tableOfRounds;
-    Helper utilWorker;
-    boolean isRoundFinished;
-    boolean isTournamentFinished;
-    Round pair;
-    Warrior chempion;
+    private Warrior[] horde;
+    private Warrior[][] tableOfRounds;
+    private boolean isRoundFinished;
+    private boolean isTournamentFinished;
+    private Round pair;
+    private Warrior chempion;
    // Dragon punisher=new DragonLair().getBorned();
 
     public void startBattle() {
@@ -38,7 +36,6 @@ public class Battlefield {
                 if (round < stageCount - 1) nextTournamentStage[winners++] = pair.getWinner();
                 else {
                     chempion = pair.getWinner();
-
                 }
             }
 

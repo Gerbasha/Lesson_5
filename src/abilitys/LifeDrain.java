@@ -7,7 +7,6 @@ import fighters.base.Warrior;
 
 public class LifeDrain implements FighterClassAbilitys, OnPostRoundPhaseAction {
 
-    // способность не учитываем то что урон может быть не нанесен, благодарю спосбоностям провтиника
     @Override
     public void useAbilitys(Warrior user, Warrior acceptor) {
         if (acceptor.getThisTurnReceivedDamage() > 0) {

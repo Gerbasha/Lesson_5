@@ -22,12 +22,11 @@ public class DragonLair {
 
     Dragon ressurectThisDragon(Dragon d1) {
 
-        this.resurected = new Dragon();
+        resurected = new Dragon();
         resurected.setName(d1.getName());
         resurected.setAttak(d1.getAttak());
         resurected.setDeffence(d1.getDeffence());
         resurected.setElements(d1.receiveElements());
-
         return resurected;
     }
 
@@ -35,12 +34,6 @@ public class DragonLair {
     static Dragon createNewDragon() {
         borned = new Dragon();
         borned.setElements(createElementTalant());
-
         return borned;
     }
-
-
-
-
-
 }
