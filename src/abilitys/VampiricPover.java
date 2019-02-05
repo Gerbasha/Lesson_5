@@ -7,7 +7,7 @@ import fighters.unded.Vampire;
 
 public class VampiricPover implements FighterClassAbilitys, OnPostRoundPhaseAction {
     @Override
-    public void useAbilitys(Warrior user, Warrior acceptor) {
+    public void useAbilitys(Warrior user, Warrior acceptor, ResultFightAction action) {
         if (user instanceof Vampire) {
             float modif = acceptor.getThisTurnReceivedDamage();
             if (((user.getCurrentHelth() + modif) > user.getHelth())) {

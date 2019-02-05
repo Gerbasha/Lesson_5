@@ -8,7 +8,7 @@ import fighters.base.Warrior;
 
 public class ReduceAbilitys implements FighterClassAbilitys, OnPreRoundPhaseAction {
     @Override
-    public void useAbilitys(Warrior user, Warrior acceptor) {
+    public void useAbilitys(Warrior user, Warrior acceptor,ResultFightAction action) {
 
         if (acceptor.getAbilities()!=null & !(acceptor.getAbilities()instanceof VoidAbilitys))
         {

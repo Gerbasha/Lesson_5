@@ -8,7 +8,7 @@ import fighters.base.Warrior;
 public class LifeDrain implements FighterClassAbilitys, OnPostRoundPhaseAction {
 
     @Override
-    public void useAbilitys(Warrior user, Warrior acceptor) {
+    public void useAbilitys(Warrior user, Warrior acceptor,ResultFightAction action) {
         if (acceptor.getThisTurnReceivedDamage() > 0) {
             if (user.getCurrentHelth() < user.getHelth()) {
                 if (((user.getCurrentHelth() + user.getThisTurnReceivedDamage() / 2) > user.getHelth())) {

@@ -8,7 +8,7 @@ import fighters.base.Warrior;
 
 public class ElementsMagic implements FighterClassAbilitys, OnPreRoundPhaseAction {
 
-    public void useAbilitys(Warrior user, Warrior acceptor) {
+    public void useAbilitys(Warrior user, Warrior acceptor,ResultFightAction action) {
         ((ElementalFighter) user).changeAtackModyfier(0);
         System.out.println("used elemental magic");
         Dragon dragon = (Dragon) user;

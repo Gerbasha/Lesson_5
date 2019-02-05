@@ -14,7 +14,7 @@ public class VoidAbilitys extends ArrayList<FighterClassAbilitys> implements Fig
     }
 
     @Override
-    public void useAbilitys(Warrior user, Warrior acceptor) {
+    public void useAbilitys(Warrior user, Warrior acceptor, ResultFightAction action) {
 
     }
 

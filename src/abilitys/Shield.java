@@ -9,7 +9,7 @@ import utilites.Helper;
 
 public class Shield implements FighterClassAbilitys, OnPreRoundPhaseAction {
     @Override
-    public  void useAbilitys(Warrior user, Warrior acceptor) {
+    public  void useAbilitys(Warrior user, Warrior acceptor,ResultFightAction action) {
         ((Knight)user).setShielded(false);
         if (((Knight)user).getShild()<Helper.getRandomHelper().nextGaussian()) ((Knight)user).setShielded(true);
     }

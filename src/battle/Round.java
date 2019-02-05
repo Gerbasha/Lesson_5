@@ -14,7 +14,11 @@ public class Round {
     private boolean isFinished;
     private Warrior firstFighter;
     private Warrior secondFighter;
-    private Warrior winner;
+     final Warrior[] winner = null;
+
+    public Round() {
+
+    }
 
     public void serFirstFighter(Warrior fighter) {
         this.firstFighter = fighter;
@@ -30,11 +34,11 @@ public class Round {
         startRound();
         postTurnPhase();
 
-        return winner;
+        return winner[0];
     }
 
     Warrior getWinner() {
-        return winner;
+        return winner[0];
     }
 
 //    instanceof DragonRider - должен перехать в интерфейс
@@ -45,6 +49,7 @@ public class Round {
             prePhaseFighterIdenrification(abilitysToUse, firstFighter, secondFighter);
 
             abilitysToUse = secondFighter.getAbilities();
+
             prePhaseFighterIdenrification(abilitysToUse, secondFighter, firstFighter);
         }
     }
@@ -52,13 +57,15 @@ public class Round {
     private void prePhaseFighterIdenrification(ArrayList<FighterClassAbilitys> abilitysToUse, Warrior firstFighter, Warrior secondFighter) {
         for (FighterClassAbilitys ability : abilitysToUse)
             if (ability instanceof OnPreRoundPhaseAction) // нет необходимости разделять FighterClassAbilitys с ActionPhase
-                ability.useAbilitys(firstFighter, secondFighter);
+                ability.useAbilitys(firstFighter, secondFighter,(w)->winner[0]=w);
     }
 
     void startRound() {
         isFinished = true;
         int rounds = 1;
-        if (winner != null) isFinished = false;
+
+
+        if (winner[0] != null) isFinished = false;
 
         while (isFinished) {
             preTurnPhase();
@@ -78,10 +85,10 @@ public class Round {
             System.out.println(firstFighter.getCurrentHelth() > secondFighter.getCurrentHelth() ?
                     firstFighter.getClass().getSimpleName() + " " + firstFighter.getName() + " winn" :
                     secondFighter.getClass().getSimpleName() + " " + secondFighter.getName() + " winn");
-            winner = (firstFighter.getCurrentHelth() > 0) ? firstFighter : secondFighter;
+            winner[0] = (firstFighter.getCurrentHelth() > 0) ? firstFighter : secondFighter;
         } else System.out.println(winner.getClass().getSimpleName() + " " + secondFighter.getName() + " winn");
 
-        winner.restore();
+        winner[0].restore();
     }
 
     void postTurnPhase() {
@@ -99,7 +106,7 @@ public class Round {
     private void postPhaseFighterIdentification(ArrayList<FighterClassAbilitys> abilitysToUse, Warrior firstFighter, Warrior secondFighter) {
         for (FighterClassAbilitys ability : abilitysToUse)
             if (ability instanceof OnPostRoundPhaseAction)
-                ability.useAbilitys(firstFighter, secondFighter);
+                ability.useAbilitys(firstFighter, secondFighter, (w)->winner[0]=w);
     }
 
     void turnPhase() {

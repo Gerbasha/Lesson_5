@@ -20,7 +20,7 @@ public class Barracs {
         boolean finish = false;
         int selector;
         do {
-            selector = (int) Math.abs(selectFighterClass.nextGaussian() * 10) % 9;
+            selector = (int) Math.abs(selectFighterClass.nextGaussian() * 10) % 2;
             if ((fightgerClases[selector] == "cheeter") && isCheaterCreated) finish = true;
             else if (fightgerClases[selector] == "cheeter") isCheaterCreated = true;
             else finish = false;

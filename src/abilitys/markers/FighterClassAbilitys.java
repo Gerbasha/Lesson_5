@@ -4,5 +4,9 @@ import fighters.base.Warrior;
 
 public interface FighterClassAbilitys {
     // третим параметром ложим callback
-    void useAbilitys(Warrior user, Warrior acceptor);
+    void useAbilitys(Warrior user, Warrior acceptor, ResultFightAction action);
+
+    interface ResultFightAction{
+        Warrior returnBattleState(Warrior user);
+    }
 }

@@ -11,7 +11,7 @@ import static utilites.Elements.*;
 
 public class ReceiveElement implements FighterClassAbilitys, OnPreRoundPhaseAction {
     @Override
-    public void useAbilitys(Warrior user, Warrior acceptor) {
+    public void useAbilitys(Warrior user, Warrior acceptor,ResultFightAction action) {
         ((ElementalFighter) user).changeAtackModyfier(0);
         System.out.print(user.getName()+" receive new element ");
         if (user instanceof AncientVampire)

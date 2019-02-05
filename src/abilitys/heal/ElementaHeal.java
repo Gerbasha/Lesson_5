@@ -7,7 +7,7 @@ import fighters.base.Warrior;
 
 public class ElementaHeal implements FighterClassAbilitys, OnPostRoundPhaseAction {
     @Override
-    public void useAbilitys(Warrior user, Warrior acceptor) {
+    public void useAbilitys(Warrior user, Warrior acceptor,ResultFightAction action) {
         if (acceptor instanceof ElementalFighter) {
             if (((((ElementalFighter) user).receiveElements()) ^ (((ElementalFighter) acceptor).receiveElements())) > 0) {
                 float addHP = user.getThisTurnReceivedDamage() * 2;

@@ -7,7 +7,7 @@ import fighters.base.Warrior;
 
 public class ElementalStrike implements FighterClassAbilitys, OnPreRoundPhaseAction {
     @Override
-    public void useAbilitys(Warrior user, Warrior acceptor) {
+    public void useAbilitys(Warrior user, Warrior acceptor,ResultFightAction action) {
         ((ElementalFighter) user).changeAtackModyfier(0);
         System.out.println(user.getName() + " use element strike");
         ElementalFighter eFighter = null;

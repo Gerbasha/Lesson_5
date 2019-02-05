@@ -7,7 +7,7 @@ import fighters.base.Fighter;
 import fighters.base.Warrior;
 
 public class DragonRider extends Warrior implements Fighter {
-    Dragon pet;
+    private Dragon pet;
 
     public DragonRider() {
         getAbilities().add(new RideTheDragon());
@@ -18,7 +18,10 @@ public class DragonRider extends Warrior implements Fighter {
     public void receiveDamage(float damage) {
         if (pet != null && pet.getHelth() > 0) {
             System.out.println("Riders Dragon receive damage");
+            pet.setThisTurnReceivedDamage(getCurrentHelth());
             pet.setCurrentHelth(pet.getCurrentHelth() - damage * pet.getDeffence());
+            pet.setThisTurnReceivedDamage(getThisTurnReceivedDamage()-getCurrentHelth());
+            this.setThisTurnReceivedDamage(pet.getThisTurnReceivedDamage());
         } else {
             setThisTurnReceivedDamage(getCurrentHelth());
             setCurrentHelth(getCurrentHelth() - (damage - damage * getDeffence()));
@@ -32,7 +35,6 @@ public class DragonRider extends Warrior implements Fighter {
             pet.attack(fighter);
             printBrifing(pet, fighter);
         }
-
     }
 
     public Dragon getPet() {
@@ -43,5 +45,4 @@ public class DragonRider extends Warrior implements Fighter {
         if (this.pet == null)
             this.pet = pet;
     }
-
 }

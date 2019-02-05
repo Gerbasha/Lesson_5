@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class UseRidedDragon implements FighterClassAbilitys, OnPreRoundPhaseAction {
     @Override
-    public void useAbilitys(Warrior user, Warrior acceptor) {
+    public void useAbilitys(Warrior user, Warrior acceptor, ResultFightAction action) {
         if (user instanceof DragonRider) {
             DragonRider dragonRider = (DragonRider) user;
             if (dragonRider.getPet() != null & !acceptor.equals(dragonRider.getPet())) {
@@ -17,7 +17,7 @@ public class UseRidedDragon implements FighterClassAbilitys, OnPreRoundPhaseActi
                     ArrayList<FighterClassAbilitys> abilitysToUse = dragonRider.getPet().getAbilities();
                     for (FighterClassAbilitys ability : abilitysToUse) {
                         if (ability instanceof OnPreRoundPhaseAction)
-                            ability.useAbilitys(dragonRider.getPet(), acceptor);
+                            ability.useAbilitys(dragonRider.getPet(), acceptor, action);
                     }
 
                 }
