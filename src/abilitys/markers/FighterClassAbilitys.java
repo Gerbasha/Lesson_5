@@ -7,6 +7,6 @@ public interface FighterClassAbilitys {
     void useAbilitys(Warrior user, Warrior acceptor, ResultFightAction action);
 
     interface ResultFightAction{
-        Warrior returnBattleState(Warrior user);
+        Warrior returnWinner();
     }
 }

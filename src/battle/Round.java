@@ -14,7 +14,8 @@ public class Round {
     private boolean isFinished;
     private Warrior firstFighter;
     private Warrior secondFighter;
-     final Warrior[] winner = null;
+    FighterClassAbilitys.ResultFightAction action;
+    final Warrior[] winner = {null};
 
     public Round() {
 
@@ -57,15 +58,15 @@ public class Round {
     private void prePhaseFighterIdenrification(ArrayList<FighterClassAbilitys> abilitysToUse, Warrior firstFighter, Warrior secondFighter) {
         for (FighterClassAbilitys ability : abilitysToUse)
             if (ability instanceof OnPreRoundPhaseAction) // нет необходимости разделять FighterClassAbilitys с ActionPhase
-                ability.useAbilitys(firstFighter, secondFighter,(w)->winner[0]=w);
+                ability.useAbilitys(firstFighter, secondFighter, action);
     }
 
     void startRound() {
         isFinished = true;
         int rounds = 1;
 
-
         if (winner[0] != null) isFinished = false;
+
 
         while (isFinished) {
             preTurnPhase();
@@ -81,12 +82,12 @@ public class Round {
             }
             if (rounds++ > 10) isFinished = false;
         }
-        if (winner == null) {
+        if (winner[0] == null) {
             System.out.println(firstFighter.getCurrentHelth() > secondFighter.getCurrentHelth() ?
                     firstFighter.getClass().getSimpleName() + " " + firstFighter.getName() + " winn" :
                     secondFighter.getClass().getSimpleName() + " " + secondFighter.getName() + " winn");
             winner[0] = (firstFighter.getCurrentHelth() > 0) ? firstFighter : secondFighter;
-        } else System.out.println(winner.getClass().getSimpleName() + " " + secondFighter.getName() + " winn");
+        } else System.out.println(winner[0].getClass().getSimpleName() + " " + secondFighter.getName() + " winn");
 
         winner[0].restore();
     }
@@ -106,7 +107,7 @@ public class Round {
     private void postPhaseFighterIdentification(ArrayList<FighterClassAbilitys> abilitysToUse, Warrior firstFighter, Warrior secondFighter) {
         for (FighterClassAbilitys ability : abilitysToUse)
             if (ability instanceof OnPostRoundPhaseAction)
-                ability.useAbilitys(firstFighter, secondFighter, (w)->winner[0]=w);
+                ability.useAbilitys(firstFighter, secondFighter, action);
     }
 
     void turnPhase() {
